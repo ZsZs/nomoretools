@@ -1,8 +1,8 @@
 frontend/.project
 frontend/.settings
 frontend/build
-frontend/nodemodules
-frontedn/typings
+frontend/node_modules
+frontend/typings
 target/
 pom.xml.tag
 pom.xml.releaseBackup
