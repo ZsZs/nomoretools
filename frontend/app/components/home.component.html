@@ -1,10 +1,12 @@
 <div class="container">
   <div class="ui grid">
-    <div class="twelve wide column">
-      <photo-list></photo-list>
-    </div>
     <div class="four wide column">
-      <side-panel></side-panel>
+        <h3>Disciplines</h3>
+        <discipline-list [disciplines]="disciplines" [(selected)]="selectedDiscipline"></discipline-list>
+    </div>
+    <div class="twelve wide column">
+        <h3>Details</h3>
+        <discipline-details  [discipline]="selectedDiscipline"></discipline-details>
     </div>
   </div>
 </div>

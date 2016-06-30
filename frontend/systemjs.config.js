@@ -50,6 +50,9 @@
 
   // No umd for router yet
   packages['@angular/router'] = { main: 'index.js', defaultExtension: 'js' };
+
+  // Temporarily until we update the guides
+  packages['@angular/router-deprecated'] = { main: '/bundles/router-deprecated' + '.umd.js', defaultExtension: 'js' };
     
   var config = {
     map: map,

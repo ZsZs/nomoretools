@@ -1,12 +1,15 @@
-import {Component} from '@angular/core';
-import {PhotoList} from './photo-list.component';
-import {SidePanel} from './side-panel.component';
+import {Component, Input} from '@angular/core';
+import {Discipline} from './discipline/discipline';
+import {DisciplineListComponent} from './discipline/discipline-list.component';
+import {DisciplineDetailsComponent} from './discipline/discipline-details.component';
 
 @Component({
   selector: 'home',
-  directives: [PhotoList, SidePanel],
+  directives: [DisciplineListComponent, DisciplineDetailsComponent],
   templateUrl: 'app/components/home.component.html'
 })
-export class HomeComponent {
 
+export class HomeComponent {
+    selectedDiscipline: Discipline;
+    @Input() disciplines: Discipline[];
 }
