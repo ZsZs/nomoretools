@@ -24,7 +24,7 @@ public class CoreApplicationTests {
 
    @Test
    public void getDiscipline() throws Exception {
-      String url = "http://localhost:" + this.port + "/disciplines/1";
+      String url = "http://localhost:" + this.port + "/disciplines/0";
       ResponseEntity<String> entity = new TestRestTemplate().getForEntity( url, String.class );
       assertThat( entity.getStatusCode(), equalTo( HttpStatus.OK ) );
       assertThat( entity.getBody(), containsString( "Requirements" ) );
