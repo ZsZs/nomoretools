@@ -1,5 +1,4 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {Router} from '@angular/router';
 import {Discipline} from './discipline';
 import {DisciplineDetailsComponent} from './discipline-details.component';
 import {DisciplineRepository} from './discipline.repository';
@@ -15,16 +14,16 @@ import {DisciplineRepository} from './discipline.repository';
 export class DisciplineListComponent implements OnInit {
     @Input() disciplines: Discipline[];
     @Input() selectedDiscipline: Discipline;
-    @Output() selectedChange: EventEmitter<Discipline> = new EventEmitter();
+    @Output() selectedChange: EventEmitter<Discipline> = new EventEmitter<Discipline>();
     
-    constructor(private disciplineRepository: DisciplineRepository) { 
+    constructor( private disciplineRepository: DisciplineRepository ) { 
     }
     
     ngOnInit() {
-        this.disciplineRepository.getDisciplines().then( disciplines => this.disciplines = disciplines);
+        this.disciplineRepository.findAll().then( disciplines => this.disciplines = disciplines);
     }
 
-    onSelect(discipline: Discipline) { 
+    onSelect( discipline: Discipline ) { 
         this.selectedDiscipline = discipline;
     }
 }

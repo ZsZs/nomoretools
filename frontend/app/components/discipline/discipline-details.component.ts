@@ -7,9 +7,9 @@ import {DisciplineRepository} from './discipline.repository';
     templateUrl: 'app/components/discipline/discipline-details.component.html'
 })
 
-export class DisciplineDetailsComponent implements OnInit, OnDestroy {
+export class DisciplineDetailsComponent {
     @Input() discipline: Discipline;
     
-    constructor(private disciplineRepository: DisciplineRepository ) {
+    constructor( private disciplineRepository: DisciplineRepository ) {
     }
 }
