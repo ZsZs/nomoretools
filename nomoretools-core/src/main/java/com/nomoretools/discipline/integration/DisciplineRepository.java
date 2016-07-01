@@ -6,7 +6,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.nomoretools.discipline.domain.Discipline;
 
-@RepositoryRestResource(collectionResourceRel = "disciplines", path = "disciplines")
+@RepositoryRestResource(collectionResourceRel = "data", path = "disciplines")
 public interface DisciplineRepository extends PagingAndSortingRepository<Discipline, Long> {
    Discipline findByName( @Param("name") String name );
    

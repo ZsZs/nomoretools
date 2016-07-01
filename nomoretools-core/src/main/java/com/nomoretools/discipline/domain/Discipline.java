@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 @Entity
 public class Discipline {
