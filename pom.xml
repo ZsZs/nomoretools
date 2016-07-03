@@ -12,6 +12,7 @@
 
 	<modules>
 		<module>nomoretools-parent</module>
+		<module>nomoretools-frontend</module>
 		<module>nomoretools-core</module>
 	</modules>
 	

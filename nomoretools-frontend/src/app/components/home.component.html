@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="ui grid">
+    <div class="four wide column">
+        <h3>Disciplines</h3>
+        <nmt-discipline-list [disciplines]="disciplines" [(selected)]="selectedDiscipline"></nmt-discipline-list>
+    </div>
+    <div class="twelve wide column">
+        <h3>Details</h3>
+        <nmt-discipline-details [discipline]="selectedDiscipline"></nmt-discipline-details>
+    </div>
+  </div>
+</div>
