@@ -6,6 +6,7 @@ nomoretools-frontend/node_modules
 nomoretools-frontend/report
 nomoretools-frontend/src/tmp
 nomoretools-frontend/typings
+nomoretools-frontend/server/src/main/resources/public
 target/
 pom.xml.tag
 pom.xml.releaseBackup
