@@ -1,8 +1,11 @@
-frontend/.project
-frontend/.settings
-frontend/build
-frontend/node_modules
-frontend/typings
+nomoretools-frontend/.project
+nomoretools-frontend/.settings
+nomoretools-frontend/build
+nomoretools-frontend/dist
+nomoretools-frontend/node_modules
+nomoretools-frontend/report
+nomoretools-frontend/src/tmp
+nomoretools-frontend/typings
 target/
 pom.xml.tag
 pom.xml.releaseBackup
