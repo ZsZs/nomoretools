@@ -33,8 +33,25 @@ let config: RouterConfig = [
     {path: '', component: HomeComponent},
 ];
 
+/*
+@Injectable()
+class MockWindow {
+    public location = { hash: 'WAOW-MOCK-HASH', host: 'localhost' };
+    constructor() {
+        console.log( 'Mock window instantiated' );
+    };
+}
+*/
+
 // TODO: Use ROUTER_FAKE_PROVIDERS when it's available
 describe('AppComponent', () => {
+/*
+    beforeEachProviders(() => [
+        Window,
+        {provide: Window, useClass: MockWindow}
+    ]);
+*/
+
     beforeEach(() => {
         addProviders([
             RouterOutletMap,

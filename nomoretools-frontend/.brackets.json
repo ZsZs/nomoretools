@@ -1,0 +1,7 @@
+{
+    "jscodehints.detectedExclusions": [
+        "D:/Projects/nomoretools/nomoretools-frontend/src/assets/js/semantic.min.js",
+        "D:/Projects/nomoretools/nomoretools-frontend/gulpfile.js",
+        "D:/Projects/nomoretools/nomoretools-frontend/src/systemjs.conf.js"
+    ]
+}

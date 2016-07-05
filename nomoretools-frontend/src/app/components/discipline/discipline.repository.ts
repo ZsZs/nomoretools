@@ -7,9 +7,12 @@ import { Discipline } from './discipline';
 
 @Injectable()
 export class DisciplineRepository {
-    private disciplineUrl = 'http://localhost:8081/disciplines';  // URL to web api
+    private port = '8081';
+    private disciplineUrl: string;
 
-    constructor( private http: Http ) { }
+    constructor( private http: Http ) {
+        this.disciplineUrl = 'http://' + window.location.hostname + ':' + this.port + '/disciplines';
+    }
 
     // Public accessors and mutators
     find( id: number ) {

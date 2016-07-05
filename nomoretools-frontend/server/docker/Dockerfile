@@ -30,6 +30,6 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 #CMD ["bash"]
 
 MAINTAINER zsolt.zsuffa@gmail.com
-EXPOSE 8081
-ADD build/nomoretools-core-1.0.0-SNAPSHOT.jar /data/nomoretools-core-1.0.0-SNAPSHOT.jar
-CMD java -jar nomoretools-core-1.0.0-SNAPSHOT.jar
+EXPOSE 8080
+ADD build/nomoretools-frontend-server-1.0.0-SNAPSHOT.jar /data/nomoretools-frontend-server-1.0.0-SNAPSHOT.jar
+CMD java -jar nomoretools-frontend-server-1.0.0-SNAPSHOT.jar
