@@ -1,0 +1,58 @@
+{
+  "AWSEBDockerrunVersion": 2,
+    
+  "containerDefinitions": [
+    {
+      "name": "nomoretools-frontend",
+      "image": "zsuffazs/nomoretools-frontend",
+      "environment": [
+        {
+          "name": "port",
+          "value": "8080"
+        }
+      ],
+      "essential": true,
+      "memory": 128,
+	  "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 8080
+        }
+      ]
+    },
+	
+    {
+      "name": "nomoretools-core",
+      "image": "zsuffazs/nomoretools-core",
+      "environment": [
+        {
+          "name": "port",
+          "value": "8081"
+        }
+      ],
+      "essential": true,
+      "memory": 128,
+	  "portMappings": [
+        {
+          "hostPort": 8081,
+          "containerPort": 8081
+        }
+      ]
+    }
+  ],
+  
+  "volumes": [
+    {
+      "name": "nomoretools-frontend",
+      "host": {
+        "sourcePath": "/data"
+      }
+    },
+    {
+      "name": "nomoretools-core",
+      "host": {
+        "sourcePath": "/data"
+      }
+    }
+  ]
+}
