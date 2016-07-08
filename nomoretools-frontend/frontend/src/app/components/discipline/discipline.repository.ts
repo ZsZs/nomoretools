@@ -7,11 +7,13 @@ import { Discipline } from './discipline';
 
 @Injectable()
 export class DisciplineRepository {
-    private port = '8081';
+    // private port = '8081';
+    private disciplineHost = 'core.nomoretools.com';
     private disciplineUrl: string;
 
     constructor( private http: Http ) {
-        this.disciplineUrl = 'http://' + window.location.hostname + ':' + this.port + '/disciplines';
+        // this.disciplineUrl = 'http://' + window.location.hostname + ':' + this.port + '/disciplines';
+        this.disciplineUrl = 'http://' + this.disciplineHost + '/disciplines';
     }
 
     // Public accessors and mutators

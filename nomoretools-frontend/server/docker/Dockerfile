@@ -31,5 +31,5 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 MAINTAINER zsolt.zsuffa@gmail.com
 EXPOSE 8080
-ADD build/nomoretools-frontend-server-1.0.0-SNAPSHOT.jar /data/nomoretools-frontend-server-1.0.0-SNAPSHOT.jar
+ADD nomoretools-frontend-server-1.0.0-SNAPSHOT.jar /data/nomoretools-frontend-server-1.0.0-SNAPSHOT.jar
 CMD java -jar nomoretools-frontend-server-1.0.0-SNAPSHOT.jar
