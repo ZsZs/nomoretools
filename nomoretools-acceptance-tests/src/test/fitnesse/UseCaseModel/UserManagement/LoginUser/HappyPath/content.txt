@@ -1,0 +1,15 @@
+!2 Login - Happy path scenario
+!*> Preconditions
+|Query: database has record|select name, password from user where name = 'john'|
+|name|password|
+|john|john|
+*!
+!* Execute, verify
+|script|login dialog driver|John|John|
+|login with username|John|and password|John|
+|check|login message|Welcome John!|
+*!
+!* Verify
+*!
+!*> Postconditions
+*!

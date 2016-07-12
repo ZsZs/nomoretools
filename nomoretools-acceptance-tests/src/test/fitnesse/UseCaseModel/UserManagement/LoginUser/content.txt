@@ -1,0 +1,7 @@
+!2 Login - Use Case
+!4 Goal
+The user wants to identify himself so he has access to the projects he created.
+!4 Scenarios
+ * [[Happy path][^HappyPath]]
+ * [[Unknown user][^UnknownUser]]
+ 
