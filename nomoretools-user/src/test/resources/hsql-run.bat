@@ -1,0 +1,1 @@
+java -cp d:\DevEnv\hsqldb-2.3.3\hsqldb\lib\hsqldb.jar org.hsqldb.server.Server --database.0 file:target/USER_TEST_DB --dbname.0 user_test_db
