@@ -3,17 +3,17 @@ import {LoginService} from './login.service';
 
 @Component({
   selector: 'nmt-login',
-  templateUrl: 'app/login.component.html'
+  templateUrl: 'app/user/login.component.html'
 })
 
 export class LoginComponent {
   private model = {'username': '', 'password': ''};
   private currentUserName: string;
 
-  constructor (private loginService: LoginService) {}
+  constructor ( private loginService: LoginService ) {}
 
   onSubmit() {
-    this.loginService.sendCredentials(this.model).subscribe(
+    this.loginService.sendCredentials( this.model ).subscribe(
       data => {
         localStorage.setItem( 'token', JSON.parse(JSON.stringify(data))._body );
         this.loginService.sendToken( localStorage.getItem( 'token' )).subscribe(

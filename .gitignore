@@ -12,6 +12,7 @@ buildNumber.properties
 .mvn/timing.properties
 nomoretools-frontend/.project
 nomoretools-frontend/.settings
+nomoretools-frontend/frontend/.idea
 nomoretools-frontend/frontend/build
 nomoretools-frontend/frontend/dist
 nomoretools-frontend/frontend/node_modules

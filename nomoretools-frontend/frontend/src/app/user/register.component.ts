@@ -13,7 +13,6 @@ export class RegisterComponent {
 
   constructor ( private registerService: RegisterService ) {}
 
-
   onSubmit() {
     this.registerService.sendUser(this.newUser).subscribe(
       data => {
