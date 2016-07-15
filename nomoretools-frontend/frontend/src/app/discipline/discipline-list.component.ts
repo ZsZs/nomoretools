@@ -8,7 +8,7 @@ import { DisciplineRepository } from './discipline.repository';
     directives: [DisciplineDetailsComponent],
     providers: [],
     styles: ['.selected {background-color: #CFD8DC !important; color: white;}'],
-    templateUrl: 'app/components/discipline/discipline-list.component.html'
+    templateUrl: 'app/discipline/discipline-list.component.html'
 })
 
 export class DisciplineListComponent implements OnInit {

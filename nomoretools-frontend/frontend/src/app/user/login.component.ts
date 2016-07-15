@@ -3,7 +3,7 @@ import {LoginService} from './login.service';
 
 @Component({
   selector: 'nmt-login',
-  templateUrl: 'app/components/login.component.html'
+  templateUrl: 'app/login.component.html'
 })
 
 export class LoginComponent {

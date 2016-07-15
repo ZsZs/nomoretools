@@ -1,6 +1,6 @@
 import { provideRouter, RouterConfig } from '@angular/router';
-import { HomeComponent } from './components/home.component';
-import { RegisterComponent } from './components/user/register.component';
+import { HomeComponent } from './home.component';
+import { RegisterComponent } from './user/register.component';
 
 export const routes: RouterConfig = [
   { path: '', redirectTo: 'home', terminal: true },

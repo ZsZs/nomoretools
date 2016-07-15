@@ -18,7 +18,7 @@ import { Component, ComponentResolver, Injector } from '@angular/core';
 import { Location, LocationStrategy } from '@angular/common';
 import { SpyLocation } from '@angular/common/testing';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home.component';
+import { HomeComponent } from './home.component';
 
 @Component({
     selector: 'nmt-test',

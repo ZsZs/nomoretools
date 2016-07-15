@@ -4,7 +4,7 @@ import {RegisterService} from './register.service';
 
 @Component ({
   selector: 'nmt-register',
-  templateUrl: 'app/components/user/register.component.html'
+  templateUrl: 'app/user/register.component.html'
 })
 
 export class RegisterComponent {

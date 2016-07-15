@@ -7,7 +7,7 @@ import { DisciplineDetailsComponent } from './discipline/discipline-details.comp
   selector: 'nmt-home',
   directives: [DisciplineListComponent, DisciplineDetailsComponent],
   providers: [],
-  templateUrl: 'app/components/home.component.html'
+  templateUrl: 'app/home.component.html'
 })
 
 export class HomeComponent {
