@@ -1,1 +1,1 @@
-java -jar d:\DevEnv\hsqldb-2.3.3\hsqldb\lib\sqltool.jar --sql "SHUTDOWN;" localhost-sa
+java -jar ../libs/sqltool.jar --sql "SHUTDOWN;" --rcFile=../nomoretools-user/src/test/resources/sqltool.rc localhost-sa
