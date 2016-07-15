@@ -14,7 +14,7 @@
       <module>nomoretools-acceptance-tests</module>
       <module>nomoretools-core</module>
       <module>nomoretools-frontend</module>
-      <module>user</module>
+      <module>nomoretools-user</module>
    </modules>
 
 </project>

@@ -6,7 +6,7 @@
       <version>1.0.0-SNAPSHOT</version>
       <relativePath>../nomoretools-parent</relativePath>
    </parent>
-   <artifactId>user</artifactId>
+   <artifactId>nomoretools-user</artifactId>
    <name>NoMoreTools User</name>
    <description>Manage users, authentication and authorisation.</description>
 

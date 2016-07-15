@@ -7,6 +7,8 @@
    </parent>
    <artifactId>nomoretools-frontend-frontend</artifactId>
    <packaging>pom</packaging>
+   <name>NoMoreTools Front-end Front-end</name>
+   <description>Front-end (TypeScript) implementation of NoMoreTools project.</description>
 
    <build>
       <plugins>

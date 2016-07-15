@@ -1,1 +1,1 @@
-java -jar ../nomoretools-user/target/user-1.0.0-SNAPSHOT.jar com.nomoretools.user.application.UserApplication spring.datasource.url=jdbc:hsqldb:hsql://localhost/user_test_db
+java -jar ../nomoretools-user/target/nomoretools-user-1.0.0-SNAPSHOT.jar com.nomoretools.user.application.UserApplication spring.datasource.url=jdbc:hsqldb:hsql://localhost/user_test_db

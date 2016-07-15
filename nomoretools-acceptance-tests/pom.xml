@@ -8,10 +8,28 @@
    </parent>
    <artifactId>nomoretools-acceptance-tests</artifactId>
    <packaging>jar</packaging>
-   <name>Acceptance Tests</name>
+   <name>NoMoreTools Acceptance Tests</name>
    <description>Acceptance Tests for the NoMoreTools project.</description>
 
    <dependencies>
+      <dependency>
+         <groupId>com.nomoretools</groupId>
+         <artifactId>nomoretools-frontend-server</artifactId>
+         <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>com.nomoretools</groupId>
+         <artifactId>nomoretools-core</artifactId>
+         <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>com.nomoretools</groupId>
+         <artifactId>nomoretools-user</artifactId>
+         <version>${project.version}</version>
+      </dependency>
+
       <dependency>
          <groupId>org.hsqldb</groupId>
          <artifactId>sqltool</artifactId>
@@ -98,14 +116,27 @@
                </execution>
 
                <execution>
-                  <id>start-backend</id>
+                  <id>start-core</id>
                   <phase>pre-integration-test</phase>
                   <goals>
                      <goal>run</goal>
                   </goals>
                   <configuration>
-                     <target>
-                        <java fork="true" spawn="true" jar="${basedir}/../nomoretools-user/target/user-1.0.0-SNAPSHOT.jar">
+                     <target name="core">
+                        <java fork="true" spawn="true" jar="${basedir}/../nomoretools-core/target/nomoretools-core-1.0.0-SNAPSHOT.jar"></java>
+                     </target>
+                  </configuration>
+               </execution>
+
+               <execution>
+                  <id>start-user</id>
+                  <phase>pre-integration-test</phase>
+                  <goals>
+                     <goal>run</goal>
+                  </goals>
+                  <configuration>
+                     <target name="user">
+                        <java fork="true" spawn="true" jar="${basedir}/../nomoretools-user/target/nomoretools-user-1.0.0-SNAPSHOT.jar">
                            <arg line="spring.datasource.url=jdbc:hsqldb:hsql://localhost/user_test_db" />
                         </java>
                      </target>
@@ -113,13 +144,58 @@
                </execution>
 
                <execution>
-                  <id>stop-backend</id>
+                  <id>start-frontend</id>
+                  <phase>pre-integration-test</phase>
+                  <goals>
+                     <goal>run</goal>
+                  </goals>
+                  <configuration>
+                     <target>
+                        <java fork="true" spawn="true" jar="${basedir}/../nomoretools-frontend/server/target/nomoretools-frontend-server-1.0.0-SNAPSHOT.jar"></java>
+                     </target>
+                  </configuration>
+               </execution>
+
+               <execution>
+                  <id>stop-frontend</id>
                   <phase>post-integration-test</phase>
                   <goals>
                      <goal>run</goal>
                   </goals>
                   <configuration>
                      <target>
+                        <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
+                           <arg value="/c" />
+                           <arg value="curl -X POST localhost:8080/shutdown" />
+                        </exec>
+                     </target>
+                  </configuration>
+               </execution>
+
+               <execution>
+                  <id>stop-core</id>
+                  <phase>post-integration-test</phase>
+                  <goals>
+                     <goal>run</goal>
+                  </goals>
+                  <configuration>
+                     <target name="core">
+                        <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
+                           <arg value="/c" />
+                           <arg value="curl -X POST localhost:8081/shutdown" />
+                        </exec>
+                     </target>
+                  </configuration>
+               </execution>
+
+               <execution>
+                  <id>stop-user</id>
+                  <phase>post-integration-test</phase>
+                  <goals>
+                     <goal>run</goal>
+                  </goals>
+                  <configuration>
+                     <target name="user">
                         <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
                            <arg value="/c" />
                            <arg value="curl -X POST localhost:8082/shutdown" />
