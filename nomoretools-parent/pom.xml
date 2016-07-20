@@ -19,6 +19,7 @@
       <fitnesse.version>20151230</fitnesse.version>
       <fitnesse.launcher.version>1.6.0</fitnesse.launcher.version>
       <hsqltool.version>2.3.3</hsqltool.version>
+      <jacoco.maven.plugin.version>0.7.7.201606060606</jacoco.maven.plugin.version>
       <java.version>1.8</java.version>
       <node.version>v6.3.0</node.version>
       <npm.version>3.9.5</npm.version>
@@ -40,6 +41,63 @@
                <groupId>com.processpuzzle.fitnesse</groupId>
                <artifactId>fitnesse-launcher-maven-plugin</artifactId>
                <version>${fitnesse.launcher.version}</version>
+            </plugin>
+
+            <plugin>
+               <groupId>org.jacoco</groupId>
+               <artifactId>jacoco-maven-plugin</artifactId>
+               <version>${jacoco.maven.plugin.version}</version>
+               <executions>
+                  <execution>
+                     <id>prepare-agent-unit</id>
+                     <goals>
+                        <goal>prepare-agent</goal>
+                     </goals>
+                     <configuration>
+                        <destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
+                     </configuration>
+                  </execution>
+
+                  <execution>
+                     <id>prepare-agent-integration</id>
+                     <goals>
+                        <goal>prepare-agent-integration</goal>
+                     </goals>
+                     <configuration>
+                        <destFile>${project.build.directory}/coverage-reports/jacoco-it.exec</destFile>
+                     </configuration>
+                  </execution>
+
+                  <execution>
+                     <id>report-unit</id>
+                     <goals>
+                        <goal>report</goal>
+                     </goals>
+                     <configuration>
+                        <dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
+                        <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+                     </configuration>
+                  </execution>
+
+                  <execution>
+                     <id>report-integration</id>
+                     <goals>
+                        <goal>report-integration</goal>
+                     </goals>
+                     <configuration>
+                        <dataFile>${project.build.directory}/coverage-reports/jacoco-it.exec</dataFile>
+                        <outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
+                     </configuration>
+                  </execution>
+ <!--  
+                  <execution>
+                     <id>check</id>
+                     <goals>
+                        <goal>check</goal>
+                     </goals>
+                  </execution>
+  -->
+               </executions>
             </plugin>
 
             <plugin>
