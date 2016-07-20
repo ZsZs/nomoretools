@@ -1,8 +1,13 @@
 {
   "name": "NoMoreTools",
-  "version": "1.0.0-rc.3",
+  "version": "1.0.0-rc.4",
   "author": "Zsolt Zsuffa",
   "description": "Simple, concise tool support for software developmnet projects.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZsZs/nomoretools.git/issues"
+  },
+  "homepage": "https://github.com/ZsZs/NoMoreTools#readme",
   "main": "src/tmp/app/main.js",
   "repository": {
     "type": "git",
@@ -31,10 +36,6 @@
     "jasmine",
     "istanbul"
   ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ZsZs/nomoretools.git/issues"
-  },
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",
     "@angular/compiler": "2.0.0-rc.4",
