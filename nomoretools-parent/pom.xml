@@ -89,14 +89,7 @@
                         <outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
                      </configuration>
                   </execution>
- <!--  
-                  <execution>
-                     <id>check</id>
-                     <goals>
-                        <goal>check</goal>
-                     </goals>
-                  </execution>
-  -->
+                  <!-- <execution> <id>check</id> <goals> <goal>check</goal> </goals> </execution> -->
                </executions>
             </plugin>
 
@@ -129,11 +122,18 @@
                      <goals>
                         <goal>push</goal>
                      </goals>
+                     <configuration>
+                        <imageName>zsuffazs/${project.artifactId}:${project.version}</imageName>
+                        <serverId>docker-hub</serverId>
+                        <registryUrl>https://index.docker.io/v1/</registryUrl>
+                     </configuration>
                   </execution>
                </executions>
                <configuration>
                   <imageName>zsuffazs/${project.artifactId}</imageName>
                   <dockerDirectory>${basedir}/docker</dockerDirectory>
+                  <serverId>docker-hub</serverId>
+                  <registryUrl>https://index.docker.io/v1/</registryUrl>
                   <resources>
                      <resource>
                         <targetPath>/</targetPath>

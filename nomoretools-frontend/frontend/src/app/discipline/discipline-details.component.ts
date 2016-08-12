@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
-import {Discipline} from './discipline';
-import {DisciplineRepository} from './discipline.repository';
+import { Component, Input } from '@angular/core';
+import { Discipline } from './discipline';
+import { DisciplineRepository } from './discipline.repository';
 
 @Component({
     selector: 'nmt-discipline-details',

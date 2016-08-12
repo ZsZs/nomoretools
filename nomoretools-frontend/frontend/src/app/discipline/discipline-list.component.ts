@@ -21,10 +21,16 @@ export class DisciplineListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.disciplineRepository.findAll().then( disciplines => this.disciplines = disciplines, error =>  this.errorMessage = <any>error );
+       this.disciplineRepository.findAll().then( disciplines => this.onRepositoryResponse( disciplines ), error =>  this.errorMessage = <any>error );
     }
 
     onSelect( discipline: Discipline ) {
         this.selectedDiscipline = discipline;
     }
+
+   // protected, private helper methods
+   private onRepositoryResponse( disciplines: Discipline[]) {
+      this.disciplines = disciplines;
+      this.selectedChange.emit( this.disciplines[0] );
+   }
 }

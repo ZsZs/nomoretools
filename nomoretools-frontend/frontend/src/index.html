@@ -4,16 +4,17 @@
     <base href=".">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-      
+
     <!-- build:css assets/bundle.css -->
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
     <!-- app:css -->
     <link rel="stylesheet" type="text/css" class="ui" href="/assets/styles/semantic.css" />
     <link rel="stylesheet" type="text/css" class="ui" href="/assets/styles/main.css" />
     <link rel="stylesheet" type="text/css" class="ui" href="/assets/styles/styles.css" />
+    <link rel="stylesheet" type="text/css" class="ct" href="/assets/styles/content-tools.min.css">
     <!-- endinject -->
     <!-- endbuild -->
-      
+
 
     <!-- build:js assets/lib.js -->
 
@@ -21,7 +22,7 @@
     <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script src="../node_modules/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
     <script src="/assets/js/semantic.min.js"></script>
-
+    <script src="/assets/js/content-tools.js"></script>
     <!-- Polyfill(s) for older browsers -->
     <script src="../node_modules/core-js/client/shim.min.js"></script>
 
@@ -41,8 +42,15 @@
       System.import('app/main.js').catch(function(err) { console.error(err); });
     </script>
     <!-- endbuild -->
+
+    <style>
+      .author {
+        font-style: italic;
+        font-weight: bold;
+      }
+    </style>
   </head>
-    
+
   <body>
     <nmt-app-component>Loading...</nmt-app-component>
   </body>

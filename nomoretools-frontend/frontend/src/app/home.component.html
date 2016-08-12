@@ -1,11 +1,13 @@
 <div class="container">
-  <div class="ui grid">
-    <div class="three wide column">
-        <h3>Disciplines</h3>
+   <div data-editable data-name="main-content">
+      <p>text to edit...</p>
+   </div>
+
+   <div class="ui grid">
+    <div class="two wide left aligned column">
         <nmt-discipline-list [disciplines]="disciplines" [(selected)]="selectedDiscipline"></nmt-discipline-list>
     </div>
-    <div class="twelve wide column">
-        <h3>Details</h3>
+    <div class="twelve wide left aligned column">
         <nmt-discipline-details [discipline]="selectedDiscipline"></nmt-discipline-details>
     </div>
   </div>

@@ -17,6 +17,10 @@ nomoretools-frontend/frontend/build
 nomoretools-frontend/frontend/dist
 nomoretools-frontend/frontend/node_modules
 nomoretools-frontend/frontend/report
+nomoretools-frontend/frontend/src/app/**/*.js
+nomoretools-frontend/frontend/src/app/**/*.js.map
+nomoretools-frontend/frontend/src/test/**/*.js
+nomoretools-frontend/frontend/src/test/**/*.js.map
 nomoretools-frontend/frontend/src/tmp
 nomoretools-frontend/frontend/src/target
 nomoretools-frontend/frontend/typings
