@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, Input } from '@angular/core';
-import { ContentEditor } from './editor/content-editor';
+import { ContentEditor } from './document-editor/content-editor';
 import { Discipline } from './discipline/discipline';
 import { DisciplineListComponent } from './discipline/discipline-list.component';
 import { DisciplineDetailsComponent } from './discipline/discipline-details.component';
