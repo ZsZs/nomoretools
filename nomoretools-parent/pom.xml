@@ -15,7 +15,7 @@
    </parent>
 
    <properties>
-      <docker.maven.plugin.version>0.4.10</docker.maven.plugin.version>
+      <docker.maven.plugin.version>0.4.11</docker.maven.plugin.version>
       <fitnesse.version>20151230</fitnesse.version>
       <fitnesse.launcher.version>1.6.0</fitnesse.launcher.version>
       <hsqltool.version>2.3.3</hsqltool.version>
