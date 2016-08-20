@@ -17,7 +17,7 @@ public class SmartDocument {
    @Id @GeneratedValue(strategy=GenerationType.AUTO) private long id;
    private String name;
    
-   //Constructors
+   // Constructors
    SmartDocument(){}
    
    public SmartDocument( String name ){
@@ -30,16 +30,18 @@ public class SmartDocument {
       this.created = new Date();
    }
    
-   //Public accessors and mutators
+   // Public accessors and mutators
    public void rename( final String newName ){
       this.name = newName;
    }
    
-   //Properties
+   // Properties
+   // @formatter:off
    public String getContent(){ return content; }
    public Date getCreated(){ return created; }
    public String getDescription(){ return this.description; }
    public String getName(){ return this.name; }
    public void setContent( final String content ){ this.content = content; }
    public void setDescription( final String description ){ this.description = description; }
+   // @formatter:on
 }
