@@ -117,13 +117,25 @@
                      </configuration>
                   </execution>
                   <execution>
-                     <id>push-image</id>
+                     <id>push-image-version</id>
                      <phase>deploy</phase>
                      <goals>
                         <goal>push</goal>
                      </goals>
                      <configuration>
                         <imageName>zsuffazs/${project.artifactId}:${project.version}</imageName>
+                        <serverId>docker-hub</serverId>
+                        <registryUrl>https://index.docker.io/v1/</registryUrl>
+                     </configuration>
+                  </execution>
+                  <execution>
+                     <id>push-image-latest</id>
+                     <phase>deploy</phase>
+                     <goals>
+                        <goal>push</goal>
+                     </goals>
+                     <configuration>
+                        <imageName>zsuffazs/${project.artifactId}:latest</imageName>
                         <serverId>docker-hub</serverId>
                         <registryUrl>https://index.docker.io/v1/</registryUrl>
                      </configuration>
@@ -141,6 +153,7 @@
                         <include>${project.build.finalName}.jar</include>
                      </resource>
                   </resources>
+                  <forceTags>true</forceTags>
                   <imageTags>
                      <imageTag>${project.version}</imageTag>
                      <imageTag>latest</imageTag>

@@ -151,6 +151,21 @@
                </execution>
 
                <execution>
+                  <id>start-document</id>
+                  <phase>pre-integration-test</phase>
+                  <goals>
+                     <goal>run</goal>
+                  </goals>
+                  <configuration>
+                     <target name="document">
+                        <java fork="true" spawn="true" jar="${basedir}/../nomoretools-smart-document/target/nomoretools-smart-document-1.0.0-SNAPSHOT.jar">
+                           <arg line="spring.datasource.url=jdbc:hsqldb:hsql://localhost/user_test_db" />
+                        </java>
+                     </target>
+                  </configuration>
+               </execution>
+
+               <execution>
                   <id>start-frontend</id>
                   <phase>pre-integration-test</phase>
                   <goals>
@@ -206,6 +221,22 @@
                         <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
                            <arg value="/c" />
                            <arg value="curl -X POST localhost:8082/shutdown" />
+                        </exec>
+                     </target>
+                  </configuration>
+               </execution>
+
+               <execution>
+                  <id>stop-document</id>
+                  <phase>post-integration-test</phase>
+                  <goals>
+                     <goal>run</goal>
+                  </goals>
+                  <configuration>
+                     <target name="document">
+                        <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
+                           <arg value="/c" />
+                           <arg value="curl -X POST localhost:8083/shutdown" />
                         </exec>
                      </target>
                   </configuration>
