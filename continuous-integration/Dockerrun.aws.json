@@ -1,0 +1,75 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [
+    {
+      "name": "nomoretools-ci",
+      "host": {
+        "sourcePath": "/var/app/current"
+      }
+    },
+    {
+      "name": "nomoretools-ci-gitlab-config",
+      "host": {
+        "sourcePath": "/var/app/current/gitlab/config"
+      }
+    },
+    {
+      "name": "nomoretools-ci-gitlab-data",
+      "host": {
+        "sourcePath": "/var/app/current/gitlab/data"
+      }
+    },
+    {
+      "name": "nomoretools-ci-gitlab-logs",
+      "host": {
+        "sourcePath": "/var/app/current/gitlab/logs"
+      }
+    }
+  ],
+  
+  "containerDefinitions": [
+    {
+      "name": "nomoretools-ci-gitlab",
+      "image": "gitlab/gitlab-ce:8.9.6-ce.0",
+      "environment": [
+        {
+          "name": "Container",
+          "value": "gitlab"
+        }
+      ],
+      "portMappings": [
+        {
+          "hostPort": 10080,
+          "containerPort": 80
+        },
+        {
+          "hostPort": 443,
+          "containerPort": 443
+        },
+        {
+          "hostPort": 2222,
+          "containerPort": 22
+        }
+      ],
+      "essential": true,
+      "memory": 128,
+      "mountPoints": [
+        {
+          "sourceVolume": "nomoretools-ci-gitlab-config",
+          "containerPath": "/etc/gitlab",
+          "readOnly": false
+        },
+        {
+          "sourceVolume": "nomoretools-ci-gitlab-data",
+          "containerPath": "/var/opt/gitlab",
+          "readOnly": false
+        },
+        {
+          "sourceVolume": "nomoretools-ci-gitlab-logs",
+          "containerPath": "/var/log/gitlab",
+          "readOnly": false
+        }
+      ]
+    }
+  ]
+}
