@@ -5,7 +5,7 @@
 |john|john|
 *!
 !* Execute, verify
-|script|login dialog driver|John|John|
+|script|login function driver|John|John|
 |login with username|John|and password|John|
 |check|login message|Welcome John!|
 *!
