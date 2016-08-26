@@ -28,7 +28,9 @@
         }
       ],
       "links": [
+        "jenkins-app",
         "nexus-app",
+        "sonar-app",
         "seleniumhub"
       ],
       "mountPoints": [
@@ -50,6 +52,38 @@
     },
 
     {
+      "name": "jenkins-app",
+      "image": "zsuffazs/ci-nexus",
+      "essential": true,
+      "memory": 256,
+      "portMappings": [
+        {
+          "hostPort": 18080,
+          "containerPort": 8080
+        }
+      ],
+      "links": [
+        "nexus-app",
+        "sonar-app",
+        "seleniumhub"
+      ],
+      "environment": [
+        {
+          "name": "NEXUS_PORT",
+          "value": "8081"
+        },
+        {
+          "name": "SONAR_PORT",
+          "value": "9000"
+        },
+        {
+          "name": "SONAR_DB_PORT",
+          "value": "5432"
+        }
+      ]
+    },
+    
+    {
       "name": "nexus-app",
       "image": "zsuffazs/ci-nexus",
       "essential": true,
@@ -64,6 +98,54 @@
         {
           "name": "NEXUS_WEBAPP_CONTEXT_PATH",
           "value": "/nexus"
+        }
+      ]
+    },
+    
+    {
+      "name": "sonar-app",
+      "image": "zsuffazs/ci-sonar",
+      "essential": true,
+      "memory": 128,
+      "links": [
+        "sonardb"
+      ],
+      "portMappings": [
+        {
+          "hostPort": 19000,
+          "containerPort": 9000
+        },
+        {
+          "hostPort": 5432,
+          "containerPort": 5432
+        }
+      ],
+      "environment": [
+        {
+          "name": "SONARQUBE_JDBC_URL",
+          "value": "jdbc:postgresql://sonardb:5432/sonar"
+        }
+      ]
+    },
+    
+    {
+      "name": "sonardb",
+      "image": "postgres",
+      "essential": true,
+      "memory": 128,
+      "environment": [
+        {
+          "name": "POSTGRES_USER",
+          "value": "sonar"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "value": "sonar"
+        }
+      ],
+      "mountPoints": [
+        {
+          "containerPath": "/var/lib/postgresql/data"
         }
       ]
     },
@@ -112,6 +194,5 @@
       "essential": true,
       "memory": 128
     }
-            
   ]
 }
