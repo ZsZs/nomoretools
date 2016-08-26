@@ -1,2 +1,2 @@
 |import|
-|com.nomoretools.fitnesse|
+|com.nomoretools.fitnesse.user|
