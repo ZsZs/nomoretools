@@ -2,74 +2,116 @@
   "AWSEBDockerrunVersion": 2,
   "volumes": [
     {
-      "name": "nomoretools-ci",
+      "name": "nginx-proxy-static",
       "host": {
-        "sourcePath": "/var/app/current"
+        "sourcePath": "/var/app/current/proxy/html"
       }
     },
     {
-      "name": "nomoretools-ci-gitlab-config",
+      "name": "nginx-proxy-conf",
       "host": {
-        "sourcePath": "/var/app/current/gitlab/config"
-      }
-    },
-    {
-      "name": "nomoretools-ci-gitlab-data",
-      "host": {
-        "sourcePath": "/var/app/current/gitlab/data"
-      }
-    },
-    {
-      "name": "nomoretools-ci-gitlab-logs",
-      "host": {
-        "sourcePath": "/var/app/current/gitlab/logs"
+        "sourcePath": "/var/app/current/proxy/conf.d"
       }
     }
   ],
   
   "containerDefinitions": [
     {
-      "name": "nomoretools-ci-gitlab",
-      "image": "gitlab/gitlab-ce:8.9.6-ce.0",
-      "environment": [
-        {
-          "name": "Container",
-          "value": "gitlab"
-        }
-      ],
+      "name": "nginx-proxy",
+      "image": "nginx",
+      "essential": true,
+      "memory": 128,
       "portMappings": [
         {
-          "hostPort": 10080,
+          "hostPort": 80,
           "containerPort": 80
+        }
+      ],
+      "links": [
+        "nexus-app",
+        "seleniumhub"
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "awseb-logs-nginx-proxy",
+          "containerPath": "/var/log/nginx"
         },
         {
-          "hostPort": 443,
-          "containerPort": 443
+          "sourceVolume": "nginx-proxy-static",
+          "containerPath": "/usr/share/nginx/html",
+          "readOnly": true
         },
         {
-          "hostPort": 2222,
-          "containerPort": 22
+          "sourceVolume": "nginx-proxy-conf",
+          "containerPath": "/etc/nginx/conf.d",
+          "readOnly": true
+        }
+      ]
+    },
+
+    {
+      "name": "nexus-app",
+      "image": "zsuffazs/ci-nexus",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 18081,
+          "containerPort": 8081
+        }
+      ],
+      "environment": [
+        {
+          "name": "NEXUS_WEBAPP_CONTEXT_PATH",
+          "value": "/nexus"
+        }
+      ]
+    },
+    
+    {
+      "name": "seleniumhub",
+      "image": "selenium/hub",
+      "portMappings": [
+        {
+          "hostPort": 4444,
+          "containerPort": 4444
         }
       ],
       "essential": true,
-      "memory": 128,
-      "mountPoints": [
+      "memory": 128
+    },
+    
+    {
+      "name": "node-chrome",
+      "image": "selenium/node-chrome",
+      "environment": [
         {
-          "sourceVolume": "nomoretools-ci-gitlab-config",
-          "containerPath": "/etc/gitlab",
-          "readOnly": false
-        },
-        {
-          "sourceVolume": "nomoretools-ci-gitlab-data",
-          "containerPath": "/var/opt/gitlab",
-          "readOnly": false
-        },
-        {
-          "sourceVolume": "nomoretools-ci-gitlab-logs",
-          "containerPath": "/var/log/gitlab",
-          "readOnly": false
+          "name": "HUB_PORT_4444_TCP_ADDR",
+          "value": "seleniumhub"
         }
-      ]
+      ],
+      "links": [
+        "seleniumhub"
+      ],
+      "essential": true,
+      "memory": 128
+    },
+    
+    {
+      "name": "node-firefox",
+      "image": "selenium/node-firefox",
+      "environment": [
+        {
+          "name": "HUB_PORT_4444_TCP_ADDR",
+          "value": "seleniumhub"
+        }
+      ],
+      "links": [
+        "seleniumhub"
+      ],
+      "essential": true,
+      "memory": 128
     }
+            
   ]
 }
