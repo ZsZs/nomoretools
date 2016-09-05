@@ -12,6 +12,7 @@
    <description>Acceptance Tests for the NoMoreTools project.</description>
 
    <dependencies>
+      <!-- Application dependencies -->
       <dependency>
          <groupId>com.nomoretools</groupId>
          <artifactId>nomoretools-frontend-server</artifactId>
@@ -30,11 +31,16 @@
          <version>${project.version}</version>
       </dependency>
 
-
       <dependency>
          <groupId>com.nomoretools</groupId>
          <artifactId>nomoretools-smart-document</artifactId>
          <version>${project.version}</version>
+      </dependency>
+
+      <!-- External dependencies -->
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-jdbc</artifactId>
       </dependency>
 
       <dependency>
@@ -42,6 +48,13 @@
          <artifactId>sqltool</artifactId>
       </dependency>
 
+      <!-- Test dependencies -->
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-test</artifactId>
+         <scope>test</scope>
+      </dependency>
+      
    </dependencies>
 
    <build>

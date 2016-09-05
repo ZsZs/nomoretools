@@ -1,12 +1,12 @@
-package com.nomoretools.fitnesse;
+package com.nomoretools.fitnesse.user;
 
-public class LoginDialogDriver {
+public class LoginFunctionDriver {
    private String userName;
    private String password;
    private String message;
    private int loginAttempts;
 
-   public LoginDialogDriver( String userName, String password ) {
+   public LoginFunctionDriver( String userName, String password ) {
       this.userName = userName;
       this.password = password;
    }

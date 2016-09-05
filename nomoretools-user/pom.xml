@@ -13,12 +13,7 @@
    <dependencies>
       <dependency>
          <groupId>org.springframework.boot</groupId>
-         <artifactId>spring-boot-starter-data-rest</artifactId>
-      </dependency>
-
-      <dependency>
-         <groupId>org.springframework.boot</groupId>
-         <artifactId>spring-boot-starter-data-jpa</artifactId>
+         <artifactId>spring-boot-starter-web</artifactId>
       </dependency>
 
       <dependency>
@@ -33,11 +28,22 @@
       </dependency>
 
       <dependency>
-         <groupId>org.flywaydb</groupId>
-         <artifactId>flyway-core</artifactId>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-jdbc</artifactId>
       </dependency>
 
-      <!-- Test dependencies -->
+      <!-- for auth server -->
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-security</artifactId>
+      </dependency>
+
+      <dependency>
+         <groupId>org.springframework.security.oauth</groupId>
+         <artifactId>spring-security-oauth2</artifactId>
+      </dependency>
+
+      <!-- test dependencies -->
       <dependency>
          <groupId>org.springframework.boot</groupId>
          <artifactId>spring-boot-starter-test</artifactId>
@@ -50,6 +56,9 @@
          <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+               <addResources>true</addResources>
+            </configuration>
          </plugin>
 
          <plugin>
@@ -98,7 +107,7 @@
          <plugin>
             <groupId>com.spotify</groupId>
             <artifactId>docker-maven-plugin</artifactId>
-         </plugin>         
+         </plugin>
       </plugins>
    </build>
 

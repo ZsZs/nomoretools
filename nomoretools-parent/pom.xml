@@ -10,23 +10,55 @@
    <parent>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-parent</artifactId>
-      <version>1.3.5.RELEASE</version>
+      <version>1.4.0.RELEASE</version>
       <relativePath />
    </parent>
 
    <properties>
+      <java.version>1.8</java.version>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      
       <docker.maven.plugin.version>0.4.11</docker.maven.plugin.version>
+      <node.version>v6.3.0</node.version>
+      <npm.version>3.9.5</npm.version>
+      
+      <!-- Spring -->
+      <spring-context.version>4.3.1.RELEASE</spring-context.version>
+      <spring-security.version>4.0.1.RELEASE</spring-security.version>
+      <spring-security-oauth.version>2.0.10.RELEASE</spring-security-oauth.version>
+
+      <!-- marshalling -->
+
+      <jackson.version>2.8.1</jackson.version>
+
+      <!-- logging -->
+      <org.slf4j.version>1.7.12</org.slf4j.version>
+      <logback.version>1.1.3</logback.version>
+
+      <!-- util -->
+      <guava.version>19.0</guava.version>
+      <commons-lang3.version>3.4</commons-lang3.version>
+      <commons-io.version>2.4</commons-io.version>
+
+      <!-- testing -->
+      <org.hamcrest.version>1.3</org.hamcrest.version>
+      <junit.version>4.12</junit.version>
+      <mockito.version>1.10.19</mockito.version>
       <fitnesse.version>20151230</fitnesse.version>
       <fitnesse.launcher.version>1.6.0</fitnesse.launcher.version>
       <hsqltool.version>2.3.3</hsqltool.version>
       <jacoco.maven.plugin.version>0.7.7.201606060606</jacoco.maven.plugin.version>
-      <java.version>1.8</java.version>
-      <node.version>v6.3.0</node.version>
-      <npm.version>3.9.5</npm.version>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <spring-context.version>4.3.1.RELEASE</spring-context.version>
-      <spring-security.version>4.0.1.RELEASE</spring-security.version>
-      <spring-security-oauth.version>2.0.6.RELEASE</spring-security-oauth.version>
+
+      <httpcore.version>4.4.5</httpcore.version>
+      <httpclient.version>4.5.2</httpclient.version>
+
+      <rest-assured.version>2.4.0</rest-assured.version>
+
+      <!-- Maven plugins -->
+      <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+      <maven-war-plugin.version>2.6</maven-war-plugin.version>
+      <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+      <cargo-maven2-plugin.version>1.4.19</cargo-maven2-plugin.version>
    </properties>
 
    <build>
