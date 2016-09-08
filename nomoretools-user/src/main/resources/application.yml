@@ -1,6 +1,6 @@
 server:
   port: 8082
-  contextPath: /uaa
+  contextPath: /
 
 endpoints:
   shutdown:
@@ -8,19 +8,33 @@ endpoints:
     enabled: true
 
 security:
-  user:
-    password: password
   oauth2:
     client:
-      clientId: 233668646673605
-      clientSecret: 33b17e044ee6a4fa383f46ec6e28ea1d
-      accessTokenUri: https://graph.facebook.com/oauth/access_token
-      userAuthorizationUri: https://www.facebook.com/dialog/oauth
-      tokenName: oauth_token
-      authenticationScheme: query
-      clientAuthenticationScheme: form
-    resource:
-      userInfoUri: https://graph.facebook.com/me
+      client-id: acme
+      client-secret: acmesecret
+      scope: read,write
+      auto-approve-scopes: '.*'
+
+facebook:
+  client:
+    clientId: 170882299985372
+    clientSecret: 2cfdc8acec52396ffce018810abbf7bb
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://graph.facebook.com/me
+github:
+  client:
+    clientId: 5cbc2f9cfce5c3414290
+    clientSecret: 900f9ce71ed67044d9a922089aff14fc467c676d
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://api.github.com/user
 
 spring:
   datasource:
@@ -37,4 +51,5 @@ spring:
         dialect: org.hibernate.dialect.HSQLDialect
     show-sql: true
     
-#logging.level.org.springframework.security=DEBUG
+logging:
+  level.org.springframework.security: DEBUG
