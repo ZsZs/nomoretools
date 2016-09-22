@@ -1,0 +1,26 @@
+server:
+  port: 8088
+
+endpoints:
+  shutdown:
+    sensitive: false
+    enabled: true
+
+flyway:
+  baselineOnMigrate: true
+
+spring:
+  datasource:
+    url: jdbc:hsqldb:hsql://localhost/user_test_db
+    username: SA
+    password: 
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.HSQLDialect
+    show-sql: true
