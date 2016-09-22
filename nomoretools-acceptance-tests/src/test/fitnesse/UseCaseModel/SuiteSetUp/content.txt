@@ -1,0 +1,7 @@
+|import|
+|com.nomoretools.fitnesse.application|
+|com.nomoretools.fitnesse.database|
+|com.nomoretools.fitnesse.user|
+
+|script|integrated application tester|
+|initialize|
