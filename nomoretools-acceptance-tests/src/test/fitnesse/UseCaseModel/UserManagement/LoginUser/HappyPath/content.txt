@@ -1,6 +1,6 @@
 !2 Login - Happy path scenario
 !*> Preconditions
-|Query: database has record|select account_name, password from account|
+|Query: database has record|select * from account|
 |account_name|password|
 |jlong|spring|
 *!
