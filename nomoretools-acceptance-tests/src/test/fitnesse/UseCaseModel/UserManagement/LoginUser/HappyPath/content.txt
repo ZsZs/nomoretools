@@ -1,6 +1,6 @@
 !2 Login - Happy path scenario
 !*> Preconditions
-|Query: database has record|select name, password from user where name = 'john'|
+|Query: database has record|select name, password from account where name = 'john'|
 |name|password|
 |john|john|
 *!
