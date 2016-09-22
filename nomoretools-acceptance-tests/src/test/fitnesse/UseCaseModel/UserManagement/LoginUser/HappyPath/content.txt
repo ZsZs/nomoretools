@@ -1,8 +1,8 @@
 !2 Login - Happy path scenario
 !*> Preconditions
-|Query: database has record|select name, password from account where name = 'john'|
-|name|password|
-|john|john|
+|Query: database has record|select account_name, password from account where account_name = 'jlong'|
+|account_name|password|
+|jlong|spring|
 *!
 !* Execute, verify
 |script|login function driver|John|John|
