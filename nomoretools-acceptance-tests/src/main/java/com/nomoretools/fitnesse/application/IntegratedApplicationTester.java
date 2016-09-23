@@ -18,12 +18,6 @@ public class IntegratedApplicationTester {
       return databaseHasRecord;
    }
 
-//   @Bean public CommandLineRunner exampleQuery(  ) {
-//      databaseHasRecord.setSql( "select * from account" );
-//      
-//      return args -> databaseHasRecord.query().forEach( System.err::println );
-//   }
-
    public static void main( String[] args ) {
       SpringApplication.run( IntegratedApplicationTester.class, args );
    }

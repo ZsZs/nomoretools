@@ -37,8 +37,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter;
@@ -60,8 +65,27 @@ import org.springframework.web.filter.CompositeFilter;
 @EnableOAuth2Client
 @EnableAuthorizationServer
 @Order( 6 )
-public class SocialApplication extends WebSecurityConfigurerAdapter {
+public class UserApplication extends WebSecurityConfigurerAdapter {
    @Autowired OAuth2ClientContext oauth2ClientContext;
+
+   @Bean @ConfigurationProperties( "facebook" ) public ClientResources facebook() {
+      return new ClientResources();
+   }
+
+   @Bean @ConfigurationProperties( "github" ) public ClientResources github() {
+      return new ClientResources();
+   }
+
+   public static void main( String[] args ) {
+      SpringApplication.run( UserApplication.class, args );
+   }
+
+   @Bean public FilterRegistrationBean oauth2ClientFilterRegistration( OAuth2ClientContextFilter filter ) {
+      FilterRegistrationBean registration = new FilterRegistrationBean();
+      registration.setFilter( filter );
+      registration.setOrder( -100 );
+      return registration;
+   }
 
    @RequestMapping( "/unauthenticated" ) public String unauthenticated() {
       return "redirect:/?error=true";
@@ -73,15 +97,18 @@ public class SocialApplication extends WebSecurityConfigurerAdapter {
       return map;
    }
 
-   @Override protected void configure( HttpSecurity http ) throws Exception {
+   @Bean UserDetailsService userDetailsService( JdbcTemplate jdbcTemplate ) {
       // @formatter:off
-		http.antMatcher("/**").authorizeRequests().antMatchers("/", "/login**", "/webjars/**").permitAll().anyRequest()
-				.authenticated().and().exceptionHandling()
-				.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/")).and().logout()
-				.logoutSuccessUrl("/").permitAll().and().csrf()
-				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
-				.addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
-		// @formatter:on
+      RowMapper<User> userDetailsRowMapper = ( rs, i ) -> 
+         new User( rs.getString( "ACCOUNT_NAME" ), 
+                   rs.getString( "PASSWORD" ), 
+                   rs.getBoolean( "ENABLED" ), 
+                   rs.getBoolean( "ENABLED" ),
+                   rs.getBoolean( "ENABLED" ), 
+                   rs.getBoolean( "ENABLED" ), 
+                   AuthorityUtils.createAuthorityList( "ROLE_USER", "ROLE_ADMIN" ) );
+      return username -> jdbcTemplate.queryForObject( "select * from ACCOUNT where ACCOUNT_NAME = ?", userDetailsRowMapper, username );
+      // @formatter:on
    }
 
    @Configuration
@@ -89,8 +116,8 @@ public class SocialApplication extends WebSecurityConfigurerAdapter {
    protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
       @Override public void configure( HttpSecurity http ) throws Exception {
          // @formatter:off
-			http.antMatcher("/me").authorizeRequests().anyRequest().authenticated();
-			// @formatter:on
+         http.antMatcher("/me").authorizeRequests().anyRequest().authenticated();
+         // @formatter:on
       }
    }
 
@@ -103,23 +130,16 @@ public class SocialApplication extends WebSecurityConfigurerAdapter {
       }
    }
 
-   public static void main( String[] args ) {
-      SpringApplication.run( SocialApplication.class, args );
-   }
-
-   @Bean public FilterRegistrationBean oauth2ClientFilterRegistration( OAuth2ClientContextFilter filter ) {
-      FilterRegistrationBean registration = new FilterRegistrationBean();
-      registration.setFilter( filter );
-      registration.setOrder( -100 );
-      return registration;
-   }
-
-   @Bean @ConfigurationProperties( "github" ) public ClientResources github() {
-      return new ClientResources();
-   }
-
-   @Bean @ConfigurationProperties( "facebook" ) public ClientResources facebook() {
-      return new ClientResources();
+   // protected, private helper methods
+   @Override protected void configure( HttpSecurity http ) throws Exception {
+      // @formatter:off
+        http.antMatcher("/**").authorizeRequests().antMatchers("/", "/login**", "/webjars/**").permitAll().anyRequest()
+                .authenticated().and().exceptionHandling()
+                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/")).and().logout()
+                .logoutSuccessUrl("/").permitAll().and().csrf()
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
+                .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+        // @formatter:on
    }
 
    private Filter ssoFilter() {
