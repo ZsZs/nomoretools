@@ -25,12 +25,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Test client for use with social application (as an OAuth2 auth server). Remember to
- * access this app via its IP address (not "localhost"), otherwise the auth server will
- * steal your cookie.
+ * Test client for use with social application (as an OAuth2 auth server). Remember to access this app via its IP address (not "localhost"), otherwise the auth
+ * server will steal your cookie.
  * 
  * @author Dave Syer
- *
  */
 @EnableAutoConfiguration
 @Configuration
@@ -38,14 +36,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ClientApplication {
 
-	@RequestMapping("/")
-	public String home(Principal user) {
-		return "Hello " + user.getName();
-	}
+   @RequestMapping( "/" ) public String home( Principal user ) {
+      return "Hello " + user.getName();
+   }
 
-	public static void main(String[] args) {
-		new SpringApplicationBuilder(ClientApplication.class)
-				.properties("spring.config.name=client").run(args);
-	}
+   public static void main( String[] args ) {
+      new SpringApplicationBuilder( ClientApplication.class ).properties( "spring.config.name=client" ).run( args );
+   }
 
 }
