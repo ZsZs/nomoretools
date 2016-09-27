@@ -107,6 +107,7 @@ public class UserApplication extends WebSecurityConfigurerAdapter {
                    rs.getBoolean( "ENABLED" ), 
                    rs.getBoolean( "ENABLED" ), 
                    AuthorityUtils.createAuthorityList( "ROLE_USER", "ROLE_ADMIN" ) );
+         
       return username -> jdbcTemplate.queryForObject( "select * from ACCOUNT where ACCOUNT_NAME = ?", userDetailsRowMapper, username );
       // @formatter:on
    }
