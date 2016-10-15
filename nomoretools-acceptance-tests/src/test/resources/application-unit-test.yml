@@ -14,6 +14,21 @@ spring:
     url: jdbc:hsqldb:mem:test_db
     username: SA
 
+core-service:
+  host: localhost
+  port: 8081
+  contextPath: 
+
+document-service:
+  host: localhost
+  port: 8083
+  contextPath: 
+
+front-end-service:
+  host: localhost
+  port: 8080
+  contextPath: 
+
 user-service:
   host: localhost
   port: 8082
