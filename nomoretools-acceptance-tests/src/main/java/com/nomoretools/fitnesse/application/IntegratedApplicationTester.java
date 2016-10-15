@@ -3,12 +3,14 @@ package com.nomoretools.fitnesse.application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 
 import com.nomoretools.fitnesse.database.DatabaseHasRecord;
 
 @SpringBootApplication
 @ComponentScan( basePackages = {"com.nomoretools.fitnesse.application", "com.nomoretools.fitnesse.database"} )
+@EnableConfigurationProperties
 public class IntegratedApplicationTester {
    @Autowired private DatabaseHasRecord databaseHasRecord;
 
