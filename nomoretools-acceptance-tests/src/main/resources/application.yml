@@ -1,4 +1,4 @@
-flyway.baseline-on-migrate=true
-
-spring.datasource.url= jdbc:hsqldb:mem:test_db
-spring.datasource.username = SA
+logging:
+  level:
+    org.springframework: INFO
+    org.springframework.security: DEBUG

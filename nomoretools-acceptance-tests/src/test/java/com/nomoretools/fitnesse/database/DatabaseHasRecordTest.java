@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.nomoretools.fitnesse.application.IntegratedApplicationTester;
@@ -16,6 +17,7 @@ import com.nomoretools.fitnesse.application.IntegratedApplicationTester;
 //@SpringBootTest
 @EnableAutoConfiguration
 @ComponentScan( basePackages = {"com.nomoretools.fitnesse.application", "com.nomoretools.fitnesse.database"} )
+@ActiveProfiles( "unit-test" )
 public class DatabaseHasRecordTest {
    private DatabaseHasRecord databaseHasRecord;
 

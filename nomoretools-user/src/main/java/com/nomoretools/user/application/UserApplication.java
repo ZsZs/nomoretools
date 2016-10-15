@@ -40,6 +40,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -64,6 +65,7 @@ import org.springframework.web.filter.CompositeFilter;
 @RestController
 @EnableOAuth2Client
 @EnableAuthorizationServer
+@EnableWebSecurity
 @Order( 6 )
 public class UserApplication extends WebSecurityConfigurerAdapter {
    @Autowired OAuth2ClientContext oauth2ClientContext;

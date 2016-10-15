@@ -11,16 +11,5 @@ flyway:
 
 spring:
   datasource:
-    url: jdbc:hsqldb:hsql://localhost/user_test_db
+    url: jdbc:hsqldb:mem:test_db
     username: SA
-    password: 
-    testWhileIdle: true
-    validationQuery: SELECT 1
-  jpa:
-    hibernate:
-      ddl-auto: validate
-      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.HSQLDialect
-    show-sql: true

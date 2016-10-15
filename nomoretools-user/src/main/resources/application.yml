@@ -1,6 +1,12 @@
 server:
   port: 8082
   contextPath: /
+  ssl:
+    keyStore: keystore/keystore.jks
+    keyStorePassword: changeit
+    keyAlias: localhost
+    keyPassword: changeit
+    enabled: true
 
 endpoints:
   shutdown:
@@ -11,6 +17,9 @@ flyway:
   baselineOnMigrate: true
 
 security:
+  user:
+    name: Admin
+    password: admin
   oauth2:
     client:
       client-id: acme
