@@ -1,47 +1,45 @@
 package com.nomoretools.fitnesse.application;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.ComponentScan;
 
 import com.nomoretools.fitnesse.core.CoreServiceConfiguration;
-import com.nomoretools.fitnesse.database.DatabaseHasRecord;
 import com.nomoretools.fitnesse.document.DocumentServiceConfiguration;
 import com.nomoretools.fitnesse.frontend.FrontEndServiceConfiguration;
-import com.nomoretools.fitnesse.user.UserServiceConfiguration;
 
 @SpringBootApplication
-@ComponentScan( basePackages = {"com.nomoretools.fitnesse.application", "com.nomoretools.fitnesse.database"} )
+@ComponentScan( basePackages = {"com.nomoretools.fitnesse.application", "com.nomoretools.fitnesse.database", "com.nomoretools.fitnesse.core", "com.nomoretools.fitnesse.document", "com.nomoretools.fitnesse.frontend", "com.nomoretools.fitnesse.user" })
 @EnableConfigurationProperties
-public class IntegratedApplicationTester {
+public class IntegratedApplicationTester implements ApplicationContextAware{
+   private static ApplicationContext applicationContext;
    @Autowired private CoreServiceConfiguration coreServiceConfiguration;
-   @Autowired private DatabaseHasRecord databaseHasRecord;
    @Autowired private DocumentServiceConfiguration documentServiceConfiguration;
    @Autowired private FrontEndServiceConfiguration frontEndConfiguration;
-   @Autowired private UserServiceConfiguration userServiceConfiguration;
+   @Autowired private ServiceConfiguration userServiceConfiguration;
 
    // public accessors and mutators
-   public DatabaseHasRecord databaseHasRecord( String sql ) {
-      databaseHasRecord.setSql( sql );
-      return databaseHasRecord;
-   }
-
    public static void main( String[] args ) {
-      SpringApplication.run( IntegratedApplicationTester.class, args );
+      applicationContext = SpringApplication.run( IntegratedApplicationTester.class, args );
    }
 
    public void initialize() {
-      SpringApplication.run( IntegratedApplicationTester.class );
+      applicationContext = SpringApplication.run( IntegratedApplicationTester.class );
    }
 
 
    // properties
    // @formatter:off
+   public static <T> T getBean( Class<T> requiredType ){ return applicationContext.getBean( requiredType ); }
    public CoreServiceConfiguration getCoreServiceConfiguration() { return coreServiceConfiguration; }
-   public DatabaseHasRecord getDatabaseHasRecord() { return databaseHasRecord; }
    public DocumentServiceConfiguration getDocumentServiceConfiguration(){ return documentServiceConfiguration; }
    public FrontEndServiceConfiguration getFrontEndConfiguration() { return frontEndConfiguration; }
-   public UserServiceConfiguration getUserServiceConfiguration() { return userServiceConfiguration; }
+   public ServiceConfiguration getUserServiceConfiguration() { return userServiceConfiguration; }
+   @Override public void setApplicationContext( ApplicationContext context ) throws BeansException { applicationContext = context; }
+   // @formatter:on
 }

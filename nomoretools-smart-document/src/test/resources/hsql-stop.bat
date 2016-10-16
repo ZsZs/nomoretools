@@ -1,0 +1,1 @@
+java -jar ../libs/sqltool.jar --sql "SHUTDOWN;" --rcFile=../nomoretools-user/src/test/resources/sqltool.rc localhost-sa

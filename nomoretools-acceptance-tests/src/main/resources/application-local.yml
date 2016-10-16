@@ -24,3 +24,29 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.HSQLDialect
     show-sql: true
+
+core-service:
+  host: localhost
+  port: 8081
+  contextPath: 
+
+document-service:
+  host: localhost
+  port: 8083
+  contextPath: 
+
+front-end-service:
+  host: localhost
+  port: 8080
+  contextPath: 
+
+user-service:
+  host: localhost
+  port: 8082
+  contextPath:
+  dataSourceConfiguration:
+    driverClassName: org.hsqldb.jdbc.JDBCDriver
+    url: jdbc:hsqldb:hsql://localhost/USER_TEST_DB
+    username: SA
+    password:  
+     

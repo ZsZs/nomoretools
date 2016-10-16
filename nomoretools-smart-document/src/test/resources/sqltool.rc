@@ -1,0 +1,4 @@
+urlid localhost-sa
+url jdbc:hsqldb:hsql://localhost/user_test_db
+username SA
+password

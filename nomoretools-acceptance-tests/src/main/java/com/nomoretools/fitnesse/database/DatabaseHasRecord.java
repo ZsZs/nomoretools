@@ -10,24 +10,24 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
-import com.nomoretools.fitnesse.application.ProductionConfiguration;
+import com.nomoretools.fitnesse.application.ServiceConfiguration;
 
-@Component
-public class DatabaseHasRecord  implements ApplicationContextAware{
+public abstract class DatabaseHasRecord  implements ApplicationContextAware{
    private ApplicationContext applicationContext;
    private CellValueMapper cellValueMapper = new CellValueMapper();
    private List<String> columnNames = Lists.newArrayList();
-   @Autowired private DatabaseClient databaseClient;
+   protected DatabaseClient databaseClient;
    private String query;
+   protected ServiceConfiguration serviceConfiguration;
 
    public DatabaseHasRecord() {}
    
-   public DatabaseHasRecord( String queryString ) {
+   public DatabaseHasRecord( ServiceConfiguration serviceConfiguration, String queryString ) {
+      this.serviceConfiguration = serviceConfiguration;
       this.query = queryString;
-      databaseClient = ProductionConfiguration.getBean( DatabaseClient.class );
+      createDatabaseClient();
    }
 
    public List<List<List<String>>> query() {
@@ -60,6 +60,11 @@ public class DatabaseHasRecord  implements ApplicationContextAware{
    @Autowired public void setDatabaseClient( DatabaseClient databaseClient ){ this.databaseClient = databaseClient; }
    public void setSql( String sql ) { this.query = sql; }
    // formatter:on
+
+   // protected, private helper methods
+   protected void createDatabaseClient() {
+      databaseClient = serviceConfiguration.createDatabaseClient();
+   }
 
    private class CellValueMapper{
       public String map( Object cellValue ){

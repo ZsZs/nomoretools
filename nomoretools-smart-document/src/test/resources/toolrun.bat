@@ -1,0 +1,1 @@
+java -cp d:\DevEnv\hsqldb-2.3.3\hsqldb\lib\hsqldb.jar org.hsqldb.util.DatabaseManagerSwing
