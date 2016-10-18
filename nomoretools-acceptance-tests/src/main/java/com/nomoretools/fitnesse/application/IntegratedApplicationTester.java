@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 import com.nomoretools.fitnesse.core.CoreServiceConfiguration;
 import com.nomoretools.fitnesse.document.DocumentServiceConfiguration;
 import com.nomoretools.fitnesse.frontend.FrontEndServiceConfiguration;
+import com.nomoretools.fitnesse.user.UserServiceConfiguration;
 
 @SpringBootApplication
 @ComponentScan( basePackages = {"com.nomoretools.fitnesse.application", "com.nomoretools.fitnesse.database", "com.nomoretools.fitnesse.core", "com.nomoretools.fitnesse.document", "com.nomoretools.fitnesse.frontend", "com.nomoretools.fitnesse.user" })
@@ -28,8 +29,12 @@ public class IntegratedApplicationTester implements ApplicationContextAware{
       applicationContext = SpringApplication.run( IntegratedApplicationTester.class, args );
    }
 
-   public void initialize() {
-      applicationContext = SpringApplication.run( IntegratedApplicationTester.class );
+   public void initialize( String activeProfile ) {
+      applicationContext = SpringApplication.run( IntegratedApplicationTester.class, new String[]{ "--spring.profiles.active=" + activeProfile } );
+      coreServiceConfiguration = getBean( CoreServiceConfiguration.class );
+      documentServiceConfiguration = getBean( DocumentServiceConfiguration.class );
+      frontEndConfiguration = getBean( FrontEndServiceConfiguration.class );
+      userServiceConfiguration = getBean( UserServiceConfiguration.class );
    }
 
 
