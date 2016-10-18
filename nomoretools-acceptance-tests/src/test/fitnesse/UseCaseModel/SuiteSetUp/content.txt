@@ -4,4 +4,4 @@
 |com.nomoretools.fitnesse.user|
 
 |script|integrated application tester|
-|initialize|
+|initialize|local|
