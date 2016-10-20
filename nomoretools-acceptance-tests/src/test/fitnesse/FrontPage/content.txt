@@ -1,6 +1,4 @@
-!2 !-NoMoreTools-! Dokumentation and Acceptance Tests
+!2 [[!-NoMoreTools-! Dokumentation and Acceptance Tests][.NoMoreTools]]
 
-!3 [[Funtions, Use Cases][.UseCaseModel]]
- * [[User Management][.UseCaseModel.UserManagement]]
- * [[Project Management][.UseCaseModel.ProjectManagement]]
+!4 [[!-FitNesse-! Dokumentation][.FitNesse]]
  

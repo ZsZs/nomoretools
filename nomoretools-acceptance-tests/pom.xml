@@ -269,7 +269,7 @@
                <maxErrorsToConsole>1</maxErrorsToConsole>
                <launches>
                   <launch>
-                     <suite>UseCaseModel</suite>
+                     <suite>NoMoreTools</suite>
                   </launch>
                </launches>
                <useProjectDependencies>
