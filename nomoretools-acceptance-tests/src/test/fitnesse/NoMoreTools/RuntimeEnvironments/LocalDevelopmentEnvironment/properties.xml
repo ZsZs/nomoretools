@@ -7,6 +7,7 @@
 <Refactor/>
 <Search/>
 <SymbolicLinks>
+<MicroServices>&lt;NoMoreTools.MicroServices</MicroServices>
 <UseCaseModel>&lt;NoMoreTools.UseCaseModel</UseCaseModel>
 </SymbolicLinks>
 <Versions/>
