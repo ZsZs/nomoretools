@@ -3,7 +3,6 @@
 !**> Overview
 !img files/NoMoreTools/UseCaseModel/PrimaryUseCases.jpg
 **!
-
 The !-NoMoreTools-! application build on micro services and this section describes the individual services and their cooperation to fullfil a complete use case. The application relies of the following services:
  * [[Continuous Delivery Service][^ContinuousDeliveryService]] - builds, deploys and tests components, services and application automaticaly
  * [[Document Service][^DocumentService]] - stores and provides smart documents, the content of the !-NoMoreTools-! website.
