@@ -5,10 +5,3 @@
  * [[User Management][^UserManagement]]
  * [[Project Management][^ProjectManagement]]
  
-!*> '''Variables Defined'''
-!define TEST_SYSTEM {slim}
-*!
-
-!*> '''Classpath'''
-${maven.classpath}
-*!
