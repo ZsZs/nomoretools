@@ -6,6 +6,9 @@
 <RecentChanges/>
 <Refactor/>
 <Search/>
+<SymbolicLinks>
+<UseCaseModel>&lt;NoMoreTools.UseCaseModel</UseCaseModel>
+</SymbolicLinks>
 <Versions/>
 <WhereUsed/>
 </properties>
