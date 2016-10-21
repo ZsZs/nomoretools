@@ -4,7 +4,7 @@
 |com.nomoretools.fitnesse.user|
 
 |script|integrated application tester|
-|configure core service|
+|configure user service|
 |set|${CoreServiceHost}|host|
 |set|${CoreServicePort}|port|
 |set|${CoreServiceContextPath}|context path|
