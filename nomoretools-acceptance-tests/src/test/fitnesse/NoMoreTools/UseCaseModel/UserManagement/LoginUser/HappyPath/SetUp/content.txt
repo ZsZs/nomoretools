@@ -1,3 +1,0 @@
-|import|
-|com.nomoretools.fitnesse.database|
-|com.nomoretools.fitnesse.user|
