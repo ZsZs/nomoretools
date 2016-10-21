@@ -1,4 +1,4 @@
-!2 !-NoMoreTools-! Dokumentation and Acceptance Tests
+!1 !-NoMoreTools-! Dokumentation and Acceptance Tests
 This site documents the use cases and services of !-NoMoreTools-! application. At the same time also tests automaticaly this specification therefor it has two purpose, application, system documentation and automated acceptance tests.
 !3 [[Use Cases][^UseCaseModel]]
 This section takes the user's point of view and describes the uses cases, how the application can be used the the user. In this sense it's a Users's Guide, thought it is extended by concret examples, test cases. The use cases are grouped into the following funtion areas:
@@ -11,7 +11,11 @@ The !-NoMoreTools-! application build on micro services and this section describ
  * [[Project Service][^MicroServices.ProjectService]] - helps to manage, execute and control projects
  * [[Test Service][^MicroServices.TestService]] - facilitates automated softare testing
  * [[User Service][^MicroServices.UserService]] - authentication and authorization server
-
+!3 [[Runtime Environments][^RuntimeEnvironments]]
+The integrated tests are carried out in very different environments. The following pages defines these runtime environments and their configuration.
+ * [[Local Development Environment][^RuntimeEnvironments.LocalDevelopmentEnvironment]]
+ * [[Acceptance Test Environment][^RuntimeEnvironments.AcceptanceTestEnvironment]]
+ * [[Release Environment][^RuntimeEnvironments.ReleaseEnvironment]]
 !*> '''Variables Defined'''
 !define TEST_SYSTEM {slim}
 *!
