@@ -5,7 +5,7 @@
 
 |script|integrated application tester|
 |configure core service|
-|set|host|${CoreServiceHost}|
+|set|${CoreServiceHost}|host|
 |set|port|${CoreServicePort}|
 |set|context path|${CoreServiceContextPath}|
 |set|data driver class name|${CoreServiceDataDriverClassName}|
