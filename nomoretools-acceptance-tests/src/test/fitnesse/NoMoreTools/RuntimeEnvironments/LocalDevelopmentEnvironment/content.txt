@@ -1,4 +1,9 @@
 !1 Local Development Environment
+Local development environment is the one where the developer implements new or bugy functionality. This environment differs very much from the production environment.
+!3 Configuration
+!**> Local Developement Environment Configuration
+
+**!
 
 !3 [[Use Cases][^UseCaseModel]]
 This section takes the user's point of view and describes the uses cases, how the application can be used the the user. In this sense it's a Users's Guide, thought it is extended by concret examples, test cases. The use cases are grouped into the following funtion areas:
