@@ -1,1 +1,2 @@
 !1 Common Variables
+To achieve consistency and easy test maintenance most of the test values, like users, IDs etc. are defined in variables.
