@@ -3,26 +3,26 @@ Local development environment is the one where the developer implements new or b
 !3 Configuration
 !**> Local Developement Environment Configuration
 !4 Core Service
-!define {host: localhost}
-  port: 8081
-  contextPath: 
+!define CoreServiceHost {localhost}
+!define CoreServicePort {8081}
+!define CoreServiceContextPath: {}
 !4 Document Service
-  host: localhost
-  port: 8083
-  contextPath: 
+!define CoreServiceHost {localhost}
+!define CoreServicePort {8083}
+!define CoreServiceContextPath: {}
 !4 Front-End Service
-  host: localhost
-  port: 8080
-  contextPath: 
+!define CoreServiceHost {localhost}
+!define CoreServicePort {8080}
+!define CoreServiceContextPath: {}
 !4 User Service
-  host: localhost
-  port: 8082
-  contextPath:
-  dataSourceConfiguration:
-    driverClassName: org.hsqldb.jdbc.JDBCDriver
-    url: jdbc:hsqldb:hsql://localhost/USER_TEST_DB
-    username: SA
-    password:  
+!define CoreServiceHost {localhost}
+!define CoreServicePort {8082}
+!define CoreServiceContextPath: {}
+!5 Data Source Configuration:
+!define CoreServiceDataDriverClassName {org.hsqldb.jdbc.JDBCDriver}
+!define CoreServiceDataUrl {jdbc:hsqldb:hsql://localhost/USER_TEST_DB}
+!define CoreServiceDataUserName {SA}
+!define CoreServiceDataPassword {}
 **!
 !3 [[Use Cases][^UseCaseModel]]
 This section takes the user's point of view and describes the uses cases, how the application can be used the the user. In this sense it's a Users's Guide, thought it is extended by concret examples, test cases. The use cases are grouped into the following funtion areas:
