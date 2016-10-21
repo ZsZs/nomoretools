@@ -4,7 +4,7 @@
 |com.nomoretools.fitnesse.user|
 
 |script|integrated application tester|
-|configure user service|
+|configure core service|
 |set|${CoreServiceHost}|host|
 |set|${CoreServicePort}|port|
 |set|${CoreServiceContextPath}|context path|
@@ -12,3 +12,11 @@
 |set|${CoreServiceDataUrl}|data url|
 |set|${CoreServiceDataUserName}|data user name|
 |set|${CoreServiceDataPassword}|data password|
+|configure user service|
+|set|${UserServiceHost}|host|
+|set|${UserServicePort}|port|
+|set|${UserServiceContextPath}|context path|
+|set|${UserServiceDataDriverClassName}|data driver class name|
+|set|${UserServiceDataUrl}|data url|
+|set|${UserServiceDataUserName}|data user name|
+|set|${UserServiceDataPassword}|data password|
