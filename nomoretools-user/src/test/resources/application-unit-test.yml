@@ -17,6 +17,11 @@ flyway:
   baselineOnMigrate: true
 
 security:
+  unauthenticatedResources:
+    - /
+    - /login**
+    - /shutdown
+    - /webjars/**
   user:
     name: Admin
     password: admin

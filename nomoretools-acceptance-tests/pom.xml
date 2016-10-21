@@ -145,7 +145,7 @@
                   <configuration>
                      <target name="user">
                         <java fork="true" spawn="true" jar="${basedir}/../nomoretools-user/target/nomoretools-user-1.0.0-SNAPSHOT.jar">
-                           <arg line="spring.datasource.url=jdbc:hsqldb:hsql://localhost/user_test_db" />
+                           <arg line="--spring.profiles.active=local" />
                         </java>
                      </target>
                   </configuration>
@@ -221,7 +221,7 @@
                      <target name="user">
                         <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
                            <arg value="/c" />
-                           <arg value="curl -X POST localhost:8082/shutdown" />
+                           <arg value="curl -u zsolt:zsuffa -X POST http://localhost:8092/management/shutdown" />
                         </exec>
                      </target>
                   </configuration>

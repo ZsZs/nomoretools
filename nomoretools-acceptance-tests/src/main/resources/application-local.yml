@@ -7,10 +7,11 @@ endpoints:
     enabled: true
 
 flyway:
-  baselineOnMigrate: true
+  baselineOnMigrate: false
 
 spring:
   datasource:
+    initialize: false
     url: jdbc:hsqldb:hsql://localhost/user_test_db
     username: SA
     password: 

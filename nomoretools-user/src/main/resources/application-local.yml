@@ -1,14 +1,13 @@
 server:
   port: 8082
   contextPath: /
-  ssl:
-    keyStore: keystore/keystore.jks
-    keyStorePassword: changeit
-    keyAlias: localhost
-    keyPassword: changeit
-    enabled: true
 
 endpoints:
+  cors: 
+    allowed-origins: http://localhost:8082
+    allowed-methods: GET,POST
+  enabled: true
+  sensitive: false
   shutdown:
     sensitive: false
     enabled: true
@@ -17,6 +16,11 @@ flyway:
   baselineOnMigrate: true
 
 security:
+  unauthorizedResources:
+    - /
+    - /login**
+    - /shutdown
+    - /webjars/**
   user:
     name: Admin
     password: admin
@@ -27,6 +31,13 @@ security:
       scope: read,write
       auto-approve-scopes: '.*'
 
+management:
+  address: localhost
+  port: 8092
+  context-path: /management
+  security:
+    enabled: false
+    
 facebook:
   client:
     clientId: 170882299985372
@@ -51,6 +62,7 @@ github:
 
 spring:
   datasource:
+    initialize: true
     url: jdbc:hsqldb:hsql://localhost/user_test_db
     username: SA
     password: 

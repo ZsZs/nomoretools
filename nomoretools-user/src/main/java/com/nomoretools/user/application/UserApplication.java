@@ -17,6 +17,7 @@ package com.nomoretools.user.application;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceS
 import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -66,9 +68,11 @@ import org.springframework.web.filter.CompositeFilter;
 @EnableOAuth2Client
 @EnableAuthorizationServer
 @EnableWebSecurity
+@EnableConfigurationProperties
 @Order( 6 )
 public class UserApplication extends WebSecurityConfigurerAdapter {
    @Autowired OAuth2ClientContext oauth2ClientContext;
+   @Autowired SecurityConfig securityConfiguration;
 
    @Bean @ConfigurationProperties( "facebook" ) public ClientResources facebook() {
       return new ClientResources();
@@ -135,13 +139,25 @@ public class UserApplication extends WebSecurityConfigurerAdapter {
 
    // protected, private helper methods
    @Override protected void configure( HttpSecurity http ) throws Exception {
+      String[] unauthenticatedResources = securityConfiguration.getUnauthenticatedResources().toArray( new String[securityConfiguration.getUnauthenticatedResources().size()] ); 
+      System.out.println( Arrays.toString( unauthenticatedResources ));
       // @formatter:off
-        http.antMatcher("/**").authorizeRequests().antMatchers("/", "/login**", "/webjars/**").permitAll().anyRequest()
-                .authenticated().and().exceptionHandling()
-                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/")).and().logout()
-                .logoutSuccessUrl("/").permitAll().and().csrf()
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
-                .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+      http
+         .authorizeRequests()
+         .antMatchers( "/", "/login**", "/oauth/authorize", "/webjars/**" ).permitAll()
+         .antMatchers( "/shutdown" ).access( "hasRole( 'ADMIN' )" )
+         .anyRequest().authenticated()
+         .and()
+         .exceptionHandling().authenticationEntryPoint( new LoginUrlAuthenticationEntryPoint( "/" ))
+         .and()
+         .formLogin().loginPage("/login").permitAll()
+         .and()
+         .logout().permitAll().logoutSuccessUrl("/").permitAll()
+         .and()
+         .csrf().csrfTokenRepository( CookieCsrfTokenRepository.withHttpOnlyFalse() )
+         .and()
+         .addFilterBefore( ssoFilter(), BasicAuthenticationFilter.class );
+        
         // @formatter:on
    }
 
