@@ -2,6 +2,9 @@
 Local development environment is the one where the developer implements new or bugy functionality. This environment differs very much from the production environment.
 !3 Configuration
 !**> Local Developement Environment Configuration
+!4 Document Service
+
+!4 User Service
 
 **!
 !3 [[Use Cases][^UseCaseModel]]
