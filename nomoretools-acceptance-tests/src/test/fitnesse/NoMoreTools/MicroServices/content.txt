@@ -9,3 +9,5 @@ The !-NoMoreTools-! application build on micro services and this section describ
  * [[Project Service][^ProjectService]] - helps to manage, execute and control projects
  * [[Test Service][^TestService]] - facilitates automated softare testing
  * [[User Service][^UserService]] - authentication and authorization server
+
+''Please note, if you want to execute any of the tests here, you should select the [[runtime environment][<NoMoreTools.RuntimeEnvironments]] first.''
