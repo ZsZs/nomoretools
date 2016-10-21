@@ -4,7 +4,6 @@ Local development environment is the one where the developer implements new or b
 !**> Local Developement Environment Configuration
 
 **!
-
 !3 [[Use Cases][^UseCaseModel]]
 This section takes the user's point of view and describes the uses cases, how the application can be used the the user. In this sense it's a Users's Guide, thought it is extended by concret examples, test cases. The use cases are grouped into the following funtion areas:
  * [[User Management][^UseCaseModel.UserManagement]] - group of use cases facilitating registering, login, logout and maintain access rights
