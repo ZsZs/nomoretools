@@ -16,10 +16,14 @@ The integrated tests are carried out in very different environments. The followi
  * [[Local Development Environment][^RuntimeEnvironments.LocalDevelopmentEnvironment]]
  * [[Acceptance Test Environment][^RuntimeEnvironments.AcceptanceTestEnvironment]]
  * [[Release Environment][^RuntimeEnvironments.ReleaseEnvironment]]
+!3 [[Common Test Snippets][^TestSnipets]]
+The following pages defines reusable test snipets. One of the most important of them is the test data scripts.
+ * [[Test Data][^TestSnipets.TestData]] - creates updates and deletes test data for various tests
+ * [[Common Variables][^TestSnipets.CommonVariables]] - defines variables common to various tests
+
 !*> '''Variables Defined'''
 !define TEST_SYSTEM {slim}
 *!
-
 !*> '''Classpath'''
 ${maven.classpath}
 *!
