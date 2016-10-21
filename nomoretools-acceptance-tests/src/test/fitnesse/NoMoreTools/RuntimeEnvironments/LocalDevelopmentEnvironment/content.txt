@@ -8,20 +8,25 @@ Local development environment is the one where the developer implements new or b
 !define CoreServiceContextPath {}
 !5 Data Source Configuration:
 !define CoreServiceDataDriverClassName {org.hsqldb.jdbc.JDBCDriver}
-!define CoreServiceDataUrl {jdbc:hsqldb:hsql://localhost/USER_TEST_DB}
+!define CoreServiceDataUrl {jdbc:hsqldb:hsql://localhost/CORE_TEST_DB}
 !define CoreServiceDataUserName {SA}
 !define CoreServiceDataPassword {}
 !4 Document Service
 !define DocumentServiceHost {localhost}
 !define DocumentServicePort {8083}
 !define DocumentServiceContextPath {}
+!5 Data Source Configuration:
+!define DocumentServiceDataDriverClassName {org.hsqldb.jdbc.JDBCDriver}
+!define DocumentServiceDataUrl {jdbc:hsqldb:hsql://localhost/DOCUMENT_TEST_DB}
+!define DocumentServiceDataUserName {SA}
+!define DocumentServiceDataPassword {}
 !4 Front-End Service
 !define FrontEndServiceHost {localhost}
 !define FrontEndServicePort {8080}
 !define FrontEndServiceContextPath {}
 !5 Data Source Configuration:
 !define FrontEndServiceDataDriverClassName {org.hsqldb.jdbc.JDBCDriver}
-!define FrontEndServiceDataUrl {jdbc:hsqldb:hsql://localhost/USER_TEST_DB}
+!define FrontEndServiceDataUrl {jdbc:hsqldb:hsql://localhost/FRONT_END_TEST_DB}
 !define FrontEndServiceDataUserName {SA}
 !define FrontEndServiceDataPassword {}
 !4 User Service
