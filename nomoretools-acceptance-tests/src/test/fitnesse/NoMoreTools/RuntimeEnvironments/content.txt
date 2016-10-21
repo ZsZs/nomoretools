@@ -1,0 +1,6 @@
+!1 Runtime Environments
+The integrated tests are carried out in very different environments. The following pages defines these runtime environments and their configuration.
+ * [[Local Development Environment][^LocalDevelopmentEnvironment]]
+ * [[Acceptance Test Environment][^AcceptanceTestEnvironment]]
+ * [[Release Environment][^ReleaseEnvironment]]
+''Please note, that to be able to run any of the integrated tests, you should choose one of the runtime environments and run the test from there.''
