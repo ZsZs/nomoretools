@@ -37,7 +37,11 @@ public abstract class ServiceConfiguration {
    public void setContextPath( String contextPath ) { this.contextPath = contextPath; }
    public void setHost( String host ) { this.host = host; }
    public DataSourceConfiguration getDataSourceConfiguration() { return dataSourceConfiguration; }
+   public void setDataDriverClassName( String dataDriverClassName ) { this.dataSourceConfiguration.setDatasourceDriverClassName( dataDriverClassName ); }
+   public void setDataPassword( String dataPassword ) { this.dataSourceConfiguration.setPassword( dataPassword ); }
    public void setDataSourceConfiguration( DataSourceConfiguration dataSourceConfiguration ) { this.dataSourceConfiguration = dataSourceConfiguration; }
+   public void setDataUrl( String dataUrl ) { this.dataSourceConfiguration.setUrl( dataUrl ); }
+   public void setDataUserName( String dataUserName ) { this.dataSourceConfiguration.setUsername( dataUserName ); }
    public void setPort( String port ) { this.port = port; }
    // @formatter:on
    
@@ -59,4 +63,5 @@ public abstract class ServiceConfiguration {
       public void setUrl( String url ) { this.url = url; }
       // formatter:on
   }
+
 }

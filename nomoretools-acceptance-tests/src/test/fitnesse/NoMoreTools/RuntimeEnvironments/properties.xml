@@ -6,6 +6,10 @@
 <RecentChanges/>
 <Refactor/>
 <Search/>
+<SymbolicLinks>
+<MicroServices>&lt;MicroServices</MicroServices>
+<UseCaseModel>&lt;UseCaseModel</UseCaseModel>
+</SymbolicLinks>
 <Versions/>
 <WhereUsed/>
 </properties>

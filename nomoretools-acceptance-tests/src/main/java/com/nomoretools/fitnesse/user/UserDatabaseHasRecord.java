@@ -7,7 +7,7 @@ public class UserDatabaseHasRecord extends DatabaseHasRecord {
    
    // public accessor and mutator methods
    public UserDatabaseHasRecord(  String queryString ){
-      super( IntegratedApplicationTester.getBean( UserServiceConfiguration.class ), queryString );
+      super( IntegratedApplicationTester.getInstance().getUserServiceConfiguration(), queryString );
    }
    
    // protected, private helper methods

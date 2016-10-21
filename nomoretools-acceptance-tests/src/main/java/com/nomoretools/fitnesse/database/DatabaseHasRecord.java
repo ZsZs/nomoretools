@@ -56,6 +56,8 @@ public abstract class DatabaseHasRecord  implements ApplicationContextAware{
    // properties
    // @formatter:off
    public <T> T getBean( Class<T> requiredType ){ return applicationContext.getBean( requiredType ); }
+   public DatabaseClient getDatabaseClient() { return databaseClient; }
+   public ServiceConfiguration getServiceConfiguration() { return serviceConfiguration; }
    @Override public void setApplicationContext( ApplicationContext context ) throws BeansException { applicationContext = context; }
    @Autowired public void setDatabaseClient( DatabaseClient databaseClient ){ this.databaseClient = databaseClient; }
    public void setSql( String sql ) { this.query = sql; }
