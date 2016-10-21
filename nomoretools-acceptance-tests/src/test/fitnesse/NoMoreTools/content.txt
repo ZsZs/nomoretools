@@ -12,3 +12,10 @@ The !-NoMoreTools-! application build on micro services and this section describ
  * [[Test Service][^MicroServices.TestService]] - facilitates automated softare testing
  * [[User Service][^MicroServices.UserService]] - authentication and authorization server
 
+!*> '''Variables Defined'''
+!define TEST_SYSTEM {slim}
+*!
+
+!*> '''Classpath'''
+${maven.classpath}
+*!
