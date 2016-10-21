@@ -6,9 +6,9 @@
 |script|integrated application tester|
 |configure core service|
 |set|${CoreServiceHost}|host|
-|set|port|${CoreServicePort}|
-|set|context path|${CoreServiceContextPath}|
-|set|data driver class name|${CoreServiceDataDriverClassName}|
-|set|data url|${CoreServiceDataUrl}|
-|set|data user name|${CoreServiceDataUserName}|
-|set|data password|${CoreServiceDataPassword}|
+|set|${CoreServicePort}|port|
+|set|${CoreServiceContextPath}|context path|
+|set|${CoreServiceDataDriverClassName}|data driver class name|
+|set|${CoreServiceDataUrl}|data url|
+|set|${CoreServiceDataUserName}|data user name|
+|set|${CoreServiceDataPassword}|data password|
