@@ -1,0 +1,2 @@
+!1 Test Data
+The following pages creates, updates and deletes test data. They are used by various tests. It is important to take care there should be scripts (test tables) which deletes the data what was created during test run.
