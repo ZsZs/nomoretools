@@ -1,1 +1,13 @@
 !1 Local Development Environment
+
+!3 [[Use Cases][^UseCaseModel]]
+This section takes the user's point of view and describes the uses cases, how the application can be used the the user. In this sense it's a Users's Guide, thought it is extended by concret examples, test cases. The use cases are grouped into the following funtion areas:
+ * [[User Management][^UseCaseModel.UserManagement]] - group of use cases facilitating registering, login, logout and maintain access rights
+ * [[Project Management][^UseCaseModel.ProjectManagement]] - enables to create new project, execute and control it.
+!3 [[Services][^MicroServices]]
+The !-NoMoreTools-! application build on micro services and this section describes the individual services and their cooperation to fullfil a complete use case. The application relies of the following services:
+ * [[Continuous Delivery Service][^MicroServices.ContinuousDeliveryService]] - builds, deploys and tests components, services and application automaticaly
+ * [[Document Service][^MicroServices.DocumentService]] - stores and provides smart documents, the content of the !-NoMoreTools-! website.
+ * [[Project Service][^MicroServices.ProjectService]] - helps to manage, execute and control projects
+ * [[Test Service][^MicroServices.TestService]] - facilitates automated softare testing
+ * [[User Service][^MicroServices.UserService]] - authentication and authorization server
