@@ -6,6 +6,5 @@
  * [[Project Management][^ProjectManagement]]
  
 ''Please note, if you want to execute any of the tests here, you should select the [[runtime environment][<NoMoreTools.RuntimeEnvironments]] first.''
-!**> Common Variables
+!4 Common Variables
 !include -c <NoMoreTools.TestSnipets.CommonVariables
-**!
