@@ -1,0 +1,4 @@
+!1 Reusable Test Snippets
+The following pages defines reusable test snipets. One of the most important of them is the test data scripts.
+ * [[Test Data][^TestData]] - creates updates and deletes test data for various tests
+ * [[Common Variables][^CommonVariables]] - defines variables common to various tests
