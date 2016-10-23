@@ -46,247 +46,249 @@
    </dependencies>
 
    <build>
-      <plugins>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-resources-plugin</artifactId>
-            <executions>
-               <execution>
-                  <id>plugin-properties</id>
-                  <phase>validate</phase>
-                  <goals>
-                     <goal>copy-resources</goal>
-                  </goals>
-                  <configuration>
-                     <outputDirectory>${project.build.directory}/fitnesse</outputDirectory>
-                     <resources>
-                        <resource>
-                           <directory>src/test/fitnesse</directory>
-                           <includes>
-                              <include>plugins.properties</include>
-                           </includes>
-                        </resource>
-                     </resources>
-                  </configuration>
-               </execution>
+      <pluginManagement>
+         <plugins>
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-resources-plugin</artifactId>
+               <executions>
+                  <execution>
+                     <id>plugin-properties</id>
+                     <phase>validate</phase>
+                     <goals>
+                        <goal>copy-resources</goal>
+                     </goals>
+                     <configuration>
+                        <outputDirectory>${project.build.directory}/fitnesse</outputDirectory>
+                        <resources>
+                           <resource>
+                              <directory>src/test/fitnesse</directory>
+                              <includes>
+                                 <include>plugins.properties</include>
+                              </includes>
+                           </resource>
+                        </resources>
+                     </configuration>
+                  </execution>
 
-               <execution>
-                  <id>frontpage</id>
-                  <phase>validate</phase>
-                  <goals>
-                     <goal>copy-resources</goal>
-                  </goals>
-                  <configuration>
-                     <outputDirectory>${project.build.directory}/fitnesse/FitNesseRoot/FrontPage</outputDirectory>
-                     <resources>
-                        <resource>
-                           <directory>src/test/fitnesse/FrontPage</directory>
-                        </resource>
-                     </resources>
-                  </configuration>
-               </execution>
+                  <execution>
+                     <id>frontpage</id>
+                     <phase>validate</phase>
+                     <goals>
+                        <goal>copy-resources</goal>
+                     </goals>
+                     <configuration>
+                        <outputDirectory>${project.build.directory}/fitnesse/FitNesseRoot/FrontPage</outputDirectory>
+                        <resources>
+                           <resource>
+                              <directory>src/test/fitnesse/FrontPage</directory>
+                           </resource>
+                        </resources>
+                     </configuration>
+                  </execution>
 
-               <execution>
-                  <id>files</id>
-                  <phase>validate</phase>
-                  <goals>
-                     <goal>copy-resources</goal>
-                  </goals>
-                  <configuration>
-                     <outputDirectory>${project.build.directory}/fitnesse/FitNesseRoot/files</outputDirectory>
-                     <resources>
-                        <resource>
-                           <directory>src/test/fitnesse/files</directory>
-                        </resource>
-                     </resources>
-                  </configuration>
-               </execution>
-            </executions>
-         </plugin>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-antrun-plugin</artifactId>
-            <executions>
-               <execution>
-                  <id>start-database</id>
-                  <phase>pre-integration-test</phase>
-                  <goals>
-                     <goal>run</goal>
-                  </goals>
-                  <configuration>
-                     <target>
-                        <exec executable="cmd" dir="${basedir}/../nomoretools-user" spawn="true">
-                           <arg value="/c" />
-                           <arg value="${basedir}/../nomoretools-user/src/test/resources/hsql-run.bat" />
-                        </exec>
-                     </target>
-                  </configuration>
-               </execution>
+                  <execution>
+                     <id>files</id>
+                     <phase>validate</phase>
+                     <goals>
+                        <goal>copy-resources</goal>
+                     </goals>
+                     <configuration>
+                        <outputDirectory>${project.build.directory}/fitnesse/FitNesseRoot/files</outputDirectory>
+                        <resources>
+                           <resource>
+                              <directory>src/test/fitnesse/files</directory>
+                           </resource>
+                        </resources>
+                     </configuration>
+                  </execution>
+               </executions>
+            </plugin>
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-antrun-plugin</artifactId>
+               <executions>
+                  <execution>
+                     <id>start-database</id>
+                     <phase>pre-integration-test</phase>
+                     <goals>
+                        <goal>run</goal>
+                     </goals>
+                     <configuration>
+                        <target>
+                           <exec executable="cmd" dir="${basedir}/../nomoretools-user" spawn="true">
+                              <arg value="/c" />
+                              <arg value="${basedir}/../nomoretools-user/src/test/resources/hsql-run.bat" />
+                           </exec>
+                        </target>
+                     </configuration>
+                  </execution>
 
-               <execution>
-                  <id>start-core</id>
-                  <phase>pre-integration-test</phase>
-                  <goals>
-                     <goal>run</goal>
-                  </goals>
-                  <configuration>
-                     <target name="core">
-                        <java fork="true" spawn="true" jar="${basedir}/../nomoretools-core/target/nomoretools-core-1.0.0-SNAPSHOT.jar"></java>
-                     </target>
-                  </configuration>
-               </execution>
+                  <execution>
+                     <id>start-core</id>
+                     <phase>pre-integration-test</phase>
+                     <goals>
+                        <goal>run</goal>
+                     </goals>
+                     <configuration>
+                        <target name="core">
+                           <java fork="true" spawn="true" jar="${basedir}/../nomoretools-core/target/nomoretools-core-1.0.0-SNAPSHOT.jar"></java>
+                        </target>
+                     </configuration>
+                  </execution>
 
-               <execution>
-                  <id>start-user</id>
-                  <phase>pre-integration-test</phase>
-                  <goals>
-                     <goal>run</goal>
-                  </goals>
-                  <configuration>
-                     <target name="user">
-                        <java fork="true" spawn="true" jar="${basedir}/../nomoretools-user/target/nomoretools-user-1.0.0-SNAPSHOT.jar">
-                           <arg line="--spring.profiles.active=local" />
-                        </java>
-                     </target>
-                  </configuration>
-               </execution>
+                  <execution>
+                     <id>start-user</id>
+                     <phase>pre-integration-test</phase>
+                     <goals>
+                        <goal>run</goal>
+                     </goals>
+                     <configuration>
+                        <target name="user">
+                           <java fork="true" spawn="true" jar="${basedir}/../nomoretools-user/target/nomoretools-user-1.0.0-SNAPSHOT.jar">
+                              <arg line="--spring.profiles.active=local" />
+                           </java>
+                        </target>
+                     </configuration>
+                  </execution>
 
-               <execution>
-                  <id>start-document</id>
-                  <phase>pre-integration-test</phase>
-                  <goals>
-                     <goal>run</goal>
-                  </goals>
-                  <configuration>
-                     <target name="document">
-                        <java fork="true" spawn="true" jar="${basedir}/../nomoretools-smart-document/target/nomoretools-smart-document-1.0.0-SNAPSHOT.jar">
-                           <arg line="spring.datasource.url=jdbc:hsqldb:hsql://localhost/user_test_db" />
-                        </java>
-                     </target>
-                  </configuration>
-               </execution>
+                  <execution>
+                     <id>start-document</id>
+                     <phase>pre-integration-test</phase>
+                     <goals>
+                        <goal>run</goal>
+                     </goals>
+                     <configuration>
+                        <target name="document">
+                           <java fork="true" spawn="true" jar="${basedir}/../nomoretools-smart-document/target/nomoretools-smart-document-1.0.0-SNAPSHOT.jar">
+                              <arg line="spring.datasource.url=jdbc:hsqldb:hsql://localhost/user_test_db" />
+                           </java>
+                        </target>
+                     </configuration>
+                  </execution>
 
-               <execution>
-                  <id>start-frontend</id>
-                  <phase>pre-integration-test</phase>
-                  <goals>
-                     <goal>run</goal>
-                  </goals>
-                  <configuration>
-                     <target>
-                        <java fork="true" spawn="true" jar="${basedir}/../nomoretools-frontend/server/target/nomoretools-frontend-server-1.0.0-SNAPSHOT.jar"></java>
-                     </target>
-                  </configuration>
-               </execution>
+                  <execution>
+                     <id>start-frontend</id>
+                     <phase>pre-integration-test</phase>
+                     <goals>
+                        <goal>run</goal>
+                     </goals>
+                     <configuration>
+                        <target>
+                           <java fork="true" spawn="true" jar="${basedir}/../nomoretools-frontend/server/target/nomoretools-frontend-server-1.0.0-SNAPSHOT.jar"></java>
+                        </target>
+                     </configuration>
+                  </execution>
 
-               <execution>
-                  <id>stop-frontend</id>
-                  <phase>post-integration-test</phase>
-                  <goals>
-                     <goal>run</goal>
-                  </goals>
-                  <configuration>
-                     <target>
-                        <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
-                           <arg value="/c" />
-                           <arg value="curl -X POST localhost:8080/shutdown" />
-                        </exec>
-                     </target>
-                  </configuration>
-               </execution>
+                  <execution>
+                     <id>stop-frontend</id>
+                     <phase>post-integration-test</phase>
+                     <goals>
+                        <goal>run</goal>
+                     </goals>
+                     <configuration>
+                        <target>
+                           <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
+                              <arg value="/c" />
+                              <arg value="curl -X POST localhost:8080/shutdown" />
+                           </exec>
+                        </target>
+                     </configuration>
+                  </execution>
 
-               <execution>
-                  <id>stop-core</id>
-                  <phase>post-integration-test</phase>
-                  <goals>
-                     <goal>run</goal>
-                  </goals>
-                  <configuration>
-                     <target name="core">
-                        <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
-                           <arg value="/c" />
-                           <arg value="curl -X POST localhost:8081/shutdown" />
-                        </exec>
-                     </target>
-                  </configuration>
-               </execution>
+                  <execution>
+                     <id>stop-core</id>
+                     <phase>post-integration-test</phase>
+                     <goals>
+                        <goal>run</goal>
+                     </goals>
+                     <configuration>
+                        <target name="core">
+                           <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
+                              <arg value="/c" />
+                              <arg value="curl -X POST localhost:8081/shutdown" />
+                           </exec>
+                        </target>
+                     </configuration>
+                  </execution>
 
-               <execution>
-                  <id>stop-user</id>
-                  <phase>post-integration-test</phase>
-                  <goals>
-                     <goal>run</goal>
-                  </goals>
-                  <configuration>
-                     <target name="user">
-                        <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
-                           <arg value="/c" />
-                           <arg value="curl -u zsolt:zsuffa -X POST http://localhost:8092/management/shutdown" />
-                        </exec>
-                     </target>
-                  </configuration>
-               </execution>
+                  <execution>
+                     <id>stop-user</id>
+                     <phase>post-integration-test</phase>
+                     <goals>
+                        <goal>run</goal>
+                     </goals>
+                     <configuration>
+                        <target name="user">
+                           <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
+                              <arg value="/c" />
+                              <arg value="curl -u zsolt:zsuffa -X POST http://localhost:8092/management/shutdown" />
+                           </exec>
+                        </target>
+                     </configuration>
+                  </execution>
 
-               <execution>
-                  <id>stop-document</id>
-                  <phase>post-integration-test</phase>
-                  <goals>
-                     <goal>run</goal>
-                  </goals>
-                  <configuration>
-                     <target name="document">
-                        <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
-                           <arg value="/c" />
-                           <arg value="curl -X POST localhost:8083/shutdown" />
-                        </exec>
-                     </target>
-                  </configuration>
-               </execution>
+                  <execution>
+                     <id>stop-document</id>
+                     <phase>post-integration-test</phase>
+                     <goals>
+                        <goal>run</goal>
+                     </goals>
+                     <configuration>
+                        <target name="document">
+                           <exec executable="cmd" dir="${basedir}/../nomoretools-acceptance-tests" spawn="false">
+                              <arg value="/c" />
+                              <arg value="curl -X POST localhost:8083/shutdown" />
+                           </exec>
+                        </target>
+                     </configuration>
+                  </execution>
 
-               <execution>
-                  <id>stop-database</id>
-                  <phase>post-integration-test</phase>
-                  <goals>
-                     <goal>run</goal>
-                  </goals>
-                  <configuration>
-                     <target>
-                        <exec executable="cmd" dir="${basedir}/../nomoretools-user" spawn="false">
-                           <arg value="/c" />
-                           <arg value="${basedir}/../nomoretools-user/src/test/resources/hsql-stop.bat" />
-                        </exec>
-                     </target>
-                  </configuration>
-               </execution>
+                  <execution>
+                     <id>stop-database</id>
+                     <phase>post-integration-test</phase>
+                     <goals>
+                        <goal>run</goal>
+                     </goals>
+                     <configuration>
+                        <target>
+                           <exec executable="cmd" dir="${basedir}/../nomoretools-user" spawn="false">
+                              <arg value="/c" />
+                              <arg value="${basedir}/../nomoretools-user/src/test/resources/hsql-stop.bat" />
+                           </exec>
+                        </target>
+                     </configuration>
+                  </execution>
 
-            </executions>
-         </plugin>
+               </executions>
+            </plugin>
 
-         <plugin>
-            <groupId>com.processpuzzle.fitnesse</groupId>
-            <artifactId>fitnesse-launcher-maven-plugin</artifactId>
-            <configuration>
-               <maxErrorsToConsole>1</maxErrorsToConsole>
-               <launches>
-                  <launch>
-                     <suite>NoMoreTools</suite>
-                  </launch>
-               </launches>
-               <useProjectDependencies>
-                  <scope>compile</scope>
-                  <scope>test</scope>
-                  <scope>runtime</scope>
-               </useProjectDependencies>
-            </configuration>
-            <dependencies>
-               <dependency>
-                  <groupId>org.fitnesse.plugins</groupId>
-                  <artifactId>fitnesse-git-plugin</artifactId>
-                  <version>1.1.1</version>
-               </dependency>
-            </dependencies>
-         </plugin>
-      </plugins>
+            <plugin>
+               <groupId>com.processpuzzle.fitnesse</groupId>
+               <artifactId>fitnesse-launcher-maven-plugin</artifactId>
+               <configuration>
+                  <maxErrorsToConsole>1</maxErrorsToConsole>
+                  <launches>
+                     <launch>
+                        <suite>NoMoreTools</suite>
+                     </launch>
+                  </launches>
+                  <useProjectDependencies>
+                     <scope>compile</scope>
+                     <scope>test</scope>
+                     <scope>runtime</scope>
+                  </useProjectDependencies>
+               </configuration>
+               <dependencies>
+                  <dependency>
+                     <groupId>org.fitnesse.plugins</groupId>
+                     <artifactId>fitnesse-git-plugin</artifactId>
+                     <version>1.1.1</version>
+                  </dependency>
+               </dependencies>
+            </plugin>
+         </plugins>
+      </pluginManagement>
    </build>
 
    <reporting>
@@ -342,6 +344,16 @@
          <build>
             <plugins>
                <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-resources-plugin</artifactId>
+               </plugin>
+
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-antrun-plugin</artifactId>
+               </plugin>
+
+               <plugin>
                   <groupId>com.processpuzzle.fitnesse</groupId>
                   <artifactId>fitnesse-launcher-maven-plugin</artifactId>
                   <executions>
@@ -365,12 +377,22 @@
          <build>
             <plugins>
                <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-resources-plugin</artifactId>
+               </plugin>
+
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-antrun-plugin</artifactId>
+               </plugin>
+               
+               <plugin>
                   <groupId>com.processpuzzle.fitnesse</groupId>
                   <artifactId>fitnesse-launcher-maven-plugin</artifactId>
                   <configuration>
                      <launches>
                         <launch>
-                           <suite>UseCaseModel</suite>
+                           <suite>NoMoreTools.RuntimeEnvironments.LocalDevelopmentEnvironment.UseCaseModel</suite>
                         </launch>
                      </launches>
                   </configuration>
