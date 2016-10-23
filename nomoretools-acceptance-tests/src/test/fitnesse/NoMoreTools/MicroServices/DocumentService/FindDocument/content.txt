@@ -1,1 +1,6 @@
 !1 Find Document Service - Documentation and Tests
+
+!4 Goal
+Facilitate various ways to find a single or multiple documents.
+!4 Scenarios
+ * [[][]]
