@@ -7,4 +7,4 @@ This service provides full blown funtionality to create, update, delete Smart Do
  * [[create document][^CreateDocument]]
  * [[update document][^UpdateDocument]]
  * [[delete document][^DeleteDocument]]
- * [[find all documents][^FindDocument]]
+ * [[find all documents][^FindAllDocuments]]
