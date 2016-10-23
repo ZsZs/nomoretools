@@ -22,7 +22,7 @@ public class IntegratedApplicationTester implements ApplicationContextAware{
    private static ApplicationContext applicationContext;
    private static IntegratedApplicationTester soleInstance;
    @Autowired private CoreServiceConfiguration coreServiceConfiguration;
-   @Autowired private ServiceConfiguration currentConfiguration;
+   private ServiceConfiguration currentConfiguration;
    @Autowired private DocumentServiceConfiguration documentServiceConfiguration;
    @Autowired private FrontEndServiceConfiguration frontEndConfiguration;
    @Autowired private ServiceConfiguration userServiceConfiguration;
