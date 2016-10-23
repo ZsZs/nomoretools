@@ -1,1 +1,10 @@
 !1 Smart Document Service - Documentation and Tests
+This service provides full blown funtionality to create, update, delete Smart Documents.
+!**> Overview
+!img files/NoMoreTools/UseCaseModel/PrimaryUseCases.jpg
+**!
+!3 Services
+ * [[create document][^CreateDocument]]
+ * [[update docuemnt][^UpdateDocument]]
+ * [[delete docuemnt][^DeleteDocument]]
+ * [[find docuemnt][^FindDocument]]
