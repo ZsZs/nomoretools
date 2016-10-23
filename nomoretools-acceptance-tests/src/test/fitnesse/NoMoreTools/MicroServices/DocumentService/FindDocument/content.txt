@@ -1,6 +1,6 @@
-!1 Find Document Service - Documentation and Tests
-
+!1 Find All Documents - Documentation and Tests
 !4 Goal
-Facilitate various ways to find a single or multiple documents.
+Returns all stored documents. If the number of the documents is large than the return collection can be paged. The page size can be configured.
 !4 Scenarios
- * [[][]]
+ * [[happy path][^HappyPath]]
+ * [[find large number of documents][^FindAndPage]]
