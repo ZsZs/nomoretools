@@ -1,0 +1,16 @@
+.classpath
+.settings
+.project
+.idea
+build
+dist
+node_modules
+report
+src/app/**/*.js
+src/app/**/*.js.map
+src/test/**/*.js
+src/test/**/*.js.map
+src/tmp
+src/target
+target/
+typings

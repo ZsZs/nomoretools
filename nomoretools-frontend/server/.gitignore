@@ -1,0 +1,6 @@
+.classpath
+.settings
+.project
+docker/build
+src/main/resources/public
+target/
