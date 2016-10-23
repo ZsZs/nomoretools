@@ -1,0 +1,12 @@
+!1 Find all documents - Happy path scenario
+!*> Preconditions
+*!
+!* Execute, verify
+|script|find all documents|
+|find|
+|check|number of documents|6|
+*!
+!* Verify
+*!
+!*> Postconditions
+*!
