@@ -1,6 +1,13 @@
-server.port=8083
+server:
+  port: 8083
 
-endpoints.shutdown.sensitive=false
-endpoints.shutdown.enabled=true
+endpoints:
+  sensitive: false
+  shutdown:
+    enabled: true
+    sensitive: false
 
-spring.jpa.hibernate.ddl-auto=validate
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate

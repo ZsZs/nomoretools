@@ -1,0 +1,24 @@
+server:
+  port: 8083
+
+endpoints:
+  shutdown:
+    enabled: true
+    sensitive: false
+
+spring:
+  datasource:
+    initialize: true
+    url: jdbc:hsqldb:hsql://localhost/document_test_db
+    username: SA
+    password: 
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.HSQLDialect
+    show-sql: true

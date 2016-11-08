@@ -45,7 +45,7 @@
       <junit.version>4.12</junit.version>
       <mockito.version>1.10.19</mockito.version>
       <fitnesse.version>20151230</fitnesse.version>
-      <fitnesse.launcher.version>1.6.0</fitnesse.launcher.version>
+      <fitnesse.launcher.version>1.6.2-RELEASE</fitnesse.launcher.version>
       <hsqltool.version>2.3.3</hsqltool.version>
       <jacoco.maven.plugin.version>0.7.7.201606060606</jacoco.maven.plugin.version>
 
