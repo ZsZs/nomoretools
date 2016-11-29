@@ -1,10 +1,11 @@
 |import|
-|com.nomoretools.fitnesse.application|
-|com.nomoretools.fitnesse.database|
-|com.nomoretools.fitnesse.user|
+|com.processpuzzle.fitnesse.connect.application|
+|com.processpuzzle.fitnesse.connect.database|
+|com.processpuzzle.fitnesse.connect.file|
+|com.processpuzzle.fitnesse.connect.rest|
 
 |script|integrated application tester|
-|configure core service|
+|configure| core-service |
 |set|${CoreServiceHost}|host|
 |set|${CoreServicePort}|port|
 |set|${CoreServiceContextPath}|context path|
@@ -12,7 +13,7 @@
 |set|${CoreServiceDataUrl}|data url|
 |set|${CoreServiceDataUserName}|data user name|
 |set|${CoreServiceDataPassword}|data password|
-|configure user service|
+|configure| user-service |
 |set|${UserServiceHost}|host|
 |set|${UserServicePort}|port|
 |set|${UserServiceContextPath}|context path|
