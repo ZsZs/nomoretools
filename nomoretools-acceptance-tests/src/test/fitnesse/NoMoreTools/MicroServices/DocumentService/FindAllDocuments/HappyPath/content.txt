@@ -2,7 +2,7 @@
 !*> Preconditions
 *!
 !* Execute, verify
-|script|rest scenario|documents|
+|script|rest scenario|document-service|documents|
 |get resource|
 |check|response status|200|
 |show|response body|
