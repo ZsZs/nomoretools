@@ -1,0 +1,31 @@
+|import|
+|com.processpuzzle.fitnesse.connect.application|
+|com.processpuzzle.fitnesse.connect.database|
+|com.processpuzzle.fitnesse.connect.file|
+|com.processpuzzle.fitnesse.connect.rest|
+
+|script|integrated application tester|
+|configure| core-service |
+|set|${CoreServiceHost}|host|
+|set|${CoreServicePort}|port|
+|set|${CoreServiceContextPath}|context path|
+|set|${CoreServiceDataDriverClassName}|data driver class name|
+|set|${CoreServiceDataUrl}|data url|
+|set|${CoreServiceDataUserName}|data user name|
+|set|${CoreServiceDataPassword}|data password|
+|configure| document-service |
+|set|${DocumentServiceHost}|host|
+|set|${DocumentServicePort}|port|
+|set|${DocumentServiceContextPath}|context path|
+|set|${DocumentServiceDataDriverClassName}|data driver class name|
+|set|${DocumentServiceDataUrl}|data url|
+|set|${DocumentServiceDataUserName}|data user name|
+|set|${DocumentServiceDataPassword}|data password|
+|configure| user-service |
+|set|${UserServiceHost}|host|
+|set|${UserServicePort}|port|
+|set|${UserServiceContextPath}|context path|
+|set|${UserServiceDataDriverClassName}|data driver class name|
+|set|${UserServiceDataUrl}|data url|
+|set|${UserServiceDataUserName}|data user name|
+|set|${UserServiceDataPassword}|data password|
