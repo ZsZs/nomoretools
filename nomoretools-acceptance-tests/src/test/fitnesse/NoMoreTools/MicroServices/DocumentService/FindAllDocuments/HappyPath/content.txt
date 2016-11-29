@@ -2,9 +2,10 @@
 !*> Preconditions
 *!
 !* Execute, verify
-|script|find all documents|
-|find|
-|check|number of documents|6|
+|script|rest scenario|documents|
+|get resource|
+|check|response status|200|
+|show|response body|
 *!
 !* Verify
 *!
