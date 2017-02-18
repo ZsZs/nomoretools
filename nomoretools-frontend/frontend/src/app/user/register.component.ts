@@ -4,12 +4,12 @@ import {RegisterService} from './register.service';
 
 @Component ({
   selector: 'nmt-register',
-  templateUrl: 'app/user/register.component.html'
+  templateUrl: './register.component.html'
 })
 
 export class RegisterComponent {
   newUser: User = new User();
-  registered: boolean = false;
+  registered = false;
 
   constructor ( private registerService: RegisterService ) {}
 

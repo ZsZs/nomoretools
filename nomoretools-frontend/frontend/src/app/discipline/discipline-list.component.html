@@ -1,5 +1,5 @@
 <div class="discipline-list">
-    <div *ngFor="let discipline of disciplines" (click)="onSelect(discipline)" [class.selected]="discipline === selectedDiscipline">
+    <div *ngFor="let discipline of disciplines" (click)="onSelect(discipline)" [class.selectedItem]="discipline === selectedDiscipline">
         <span (click)="selectedChange.emit(discipline)"><Strong>{{discipline.name}}</Strong></span>
     </div>
 </div>

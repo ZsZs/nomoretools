@@ -1,6 +1,6 @@
 import {Discipline} from './discipline';
 
-export var DISCIPLINES: Discipline[] = [
+export const DISCIPLINES: Discipline[] = [
   { id: 11, name: 'Requirements' },
   { id: 12, name: 'Analysis and Design' },
   { id: 13, name: 'Implementation' },

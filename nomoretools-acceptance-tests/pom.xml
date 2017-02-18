@@ -39,7 +39,7 @@
       <dependency>
          <groupId>com.processpuzzle.fitnesse</groupId>
          <artifactId>fitnesse-connect-connect</artifactId>
-         <version>1.0.0-RELEASE</version>
+         <version>1.0.7</version>
       </dependency>
 
       <!-- Test dependencies -->
