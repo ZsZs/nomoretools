@@ -20,6 +20,7 @@
       <module>nomoretools-frontend</module>
       <module>nomoretools-user</module>
       <module>nomoretools-smart-document</module>
+      <module>nomoretools-ci</module>
    </modules>
 
 </project>
