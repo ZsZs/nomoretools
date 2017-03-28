@@ -1,20 +1,15 @@
-/**
- * Created by Zsolt on 8/17/2016.
- */
-
 import {
    Component,
    ComponentFactory,
-   ComponentMetadata,
-   ComponentResolver,
    Directive,
    Input,
    OnChanges,
    ReflectiveInjector,
-   ViewContainerRef
+   ViewContainerRef, ComponentFactoryResolver
 } from '@angular/core';
+import {ComponentMetadata} from "codelyzer/angular/metadata";
 
-export function createComponentFactory( resolver: ComponentResolver, metadata: ComponentMetadata ): Promise<ComponentFactory<any>> {
+export function createComponentFactory( resolver: ComponentFactoryResolver, metadata: ComponentMetadata ): Promise<ComponentFactory<any>> {
    const cmpClass = class DynamicComponent {};
    const decoratedCmp = Component( metadata )( cmpClass );
    return resolver.resolveComponent( decoratedCmp );
