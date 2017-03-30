@@ -1,0 +1,185 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [],
+  
+  "containerDefinitions": [
+    {
+      "name": "proxy",
+      "image": "zsuffazs/nomoretools-ci-proxy",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "gitlab"
+        "jenkins",
+        "nexus",
+        "sonar",
+        "seleniumhub"
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "awseb-logs-nginx-proxy",
+          "containerPath": "/var/log/nginx"
+        }
+      ]
+    },
+
+    {
+      "name": "jenkins",
+      "image": "nomoretools-ci-jenkins",
+      "essential": true,
+      "memory": 256,
+      "portMappings": [
+        {
+          "hostPort": 18080,
+          "containerPort": 8080
+        }
+      ],
+      "links": [
+        "nexus",
+        "gitlab",
+        "sonar",
+        "seleniumhub"
+      ],
+      "environment": [
+        {
+          "name": "NEXUS_PORT",
+          "value": "8081"
+        },
+        {
+          "name": "SONAR_PORT",
+          "value": "9000"
+        },
+        {
+          "name": "SONAR_DB_PORT",
+          "value": "5432"
+        }
+      ]
+    },
+    
+    {
+      "name": "nexus",
+      "image": "nomoretools-ci-nexus",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 18081,
+          "containerPort": 8081
+        }
+      ],
+      "environment": [
+        {
+          "name": "NEXUS_WEBAPP_CONTEXT_PATH",
+          "value": "/nexus"
+        }
+      ]
+    },
+    
+    {
+      "name": "sonar",
+      "image": "nomoretools-ci-sonar",
+      "essential": true,
+      "memory": 128,
+      "links": [
+        "sonardb"
+      ],
+      "portMappings": [
+        {
+          "hostPort": 19000,
+          "containerPort": 9000
+        },
+        {
+          "hostPort": 5432,
+          "containerPort": 5432
+        }
+      ],
+      "environment": [
+        {
+          "name": "SONARQUBE_JDBC_URL",
+          "value": "jdbc:postgresql://sonardb:5432/sonar"
+        },
+        {
+          "name": "SONARQUBE_JDBC_USERNAME",
+          "value": "sonar"
+        },
+        {
+          "name": "SONARQUBE_JDBC_PASSWORD",
+          "value": "sonar"
+        }
+      ]
+    },
+    
+    {
+      "name": "sonardb",
+      "image": "postgres",
+      "essential": true,
+      "memory": 128,
+      "environment": [
+        {
+          "name": "POSTGRES_USER",
+          "value": "sonar"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "value": "sonar"
+        }
+      ],
+      "mountPoints": [
+        {
+          "containerPath": "/var/lib/postgresql/data"
+        }
+      ]
+    },
+    
+    {
+      "name": "seleniumhub",
+      "image": "selenium/hub",
+      "portMappings": [
+        {
+          "hostPort": 4444,
+          "containerPort": 4444
+        }
+      ],
+      "essential": true,
+      "memory": 128
+    },
+    
+    {
+      "name": "node-chrome",
+      "image": "selenium/node-chrome",
+      "environment": [
+        {
+          "name": "HUB_PORT_4444_TCP_ADDR",
+          "value": "seleniumhub"
+        }
+      ],
+      "links": [
+        "seleniumhub"
+      ],
+      "essential": true,
+      "memory": 128
+    },
+    
+    {
+      "name": "node-firefox",
+      "image": "selenium/node-firefox",
+      "environment": [
+        {
+          "name": "HUB_PORT_4444_TCP_ADDR",
+          "value": "seleniumhub"
+        }
+      ],
+      "links": [
+        "seleniumhub"
+      ],
+      "essential": true,
+      "memory": 128
+    }
+  ]
+}

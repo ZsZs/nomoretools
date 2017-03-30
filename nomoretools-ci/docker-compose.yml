@@ -45,6 +45,7 @@ services:
     - nexus
     - gitlab
     - sonar
+    - seleniumhub
   environment:
     - NEXUS_PORT=8081
     - SONAR_PORT=9000
