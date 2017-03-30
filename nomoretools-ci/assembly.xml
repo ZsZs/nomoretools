@@ -12,10 +12,11 @@
       <directory>${project.basedir}</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
-        <include>Dockerrun.aws.json</include>
-        <include>fitnesse*/**</include>
-        <include>maven*/**</include>
+        <include>docker-compose.yml</include>
+        <include>jenkins*/**</include>
+        <include>nexus*/**</include>
         <include>proxy*/**</include>
+        <include>sonar*/**</include>
       </includes>
     </fileSet>
   </fileSets>
