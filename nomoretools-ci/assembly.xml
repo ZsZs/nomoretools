@@ -12,7 +12,8 @@
       <directory>${project.basedir}</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
-        <include>docker-compose.yml</include>
+        <include>Dockerrun.aws.json</include>
+        <include>placeholder.jpg</include>
         <include>jenkins*/**</include>
         <include>nexus*/**</include>
         <include>proxy*/**</include>

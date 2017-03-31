@@ -1,0 +1,237 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [],
+  
+  "containerDefinitions": [
+    {
+      "name": "proxy",
+      "image": "zsuffazs/nomoretools-ci-proxy:dev",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "gitlab",
+        "jenkins",
+        "nexus",
+        "sonar",
+        "seleniumhub"
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "awseb-logs-nginx-proxy",
+          "containerPath": "/var/log/nginx"
+        }
+      ]
+    },
+    
+    {
+      "name": "gitlab",
+      "image": "gitlab/gitlab-ce:8.14.4-ce.0",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 8080,
+          "containerPort": 80
+        },
+        {
+          "hostPort": 443,
+          "containerPort": 443
+        },
+        {
+          "hostPort": 2222,
+          "containerPort": 22
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "/opt/gitlab/config",
+          "containerPath": "/etc/gitlab"
+        },
+        {
+          "sourceVolume": "/opt/gitlab/logs",
+          "containerPath": "/var/log/gitlab"
+        },
+        {
+          "sourceVolume": "/opt/gitlab/data",
+          "containerPath": "/var/opt/gitlab"
+        }
+      ]
+    },
+
+    {
+      "name": "jenkins",
+      "image": "zsuffazs/nomoretools-ci-jenkins:dev",
+      "essential": true,
+      "memory": 256,
+      "portMappings": [
+        {
+          "hostPort": 18080,
+          "containerPort": 8080
+        }
+      ],
+      "links": [
+        "nexus",
+        "gitlab",
+        "sonar",
+        "seleniumhub"
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "/var/run/docker.sock",
+          "containerPath": "/var/run/docker.sock"
+        },
+        {
+          "sourceVolume": "/usr/bin/docker",
+          "containerPath": "/usr/bin/docker"
+        },
+        {
+          "sourceVolume": "/opt/jenkins/",
+          "containerPath": "/var/lib/jenkins/"
+        }
+      ],
+      "environment": [
+        {
+          "name": "NEXUS_PORT",
+          "value": "8081"
+        },
+        {
+          "name": "SONAR_PORT",
+          "value": "9000"
+        },
+        {
+          "name": "SONAR_DB_PORT",
+          "value": "5432"
+        }
+      ]
+    },
+    
+    {
+      "name": "nexus",
+      "image": "zsuffazs/nomoretools-ci-nexus:dev",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 18081,
+          "containerPort": 8081
+        }
+      ]
+    },
+    
+    {
+      "name": "sonar",
+      "image": "zsuffazs/nomoretools-ci-sonar:dev",
+      "essential": true,
+      "memory": 128,
+      "links": [
+        "sonardb"
+      ],
+      "portMappings": [
+        {
+          "hostPort": 19000,
+          "containerPort": 9000
+        },
+        {
+          "hostPort": 5432,
+          "containerPort": 5432
+        }
+      ],
+      "environment": [
+        {
+          "name": "SONARQUBE_JDBC_URL",
+          "value": "jdbc:postgresql://sonardb:5432/sonar"
+        },
+        {
+          "name": "SONARQUBE_JDBC_USERNAME",
+          "value": "sonar"
+        },
+        {
+          "name": "SONARQUBE_JDBC_PASSWORD",
+          "value": "sonar"
+        }
+      ]
+    },
+    
+    {
+      "name": "sonardb",
+      "image": "postgres",
+      "essential": true,
+      "memory": 128,
+      "environment": [
+        {
+          "name": "POSTGRES_USER",
+          "value": "sonar"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "value": "sonar"
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "/opt/postgres/data",
+          "containerPath": "/var/lib/postgresql/data"
+        }
+      ]
+    },
+    
+    {
+      "name": "seleniumhub",
+      "image": "selenium/hub",
+      "portMappings": [
+        {
+          "hostPort": 4444,
+          "containerPort": 4444
+        }
+      ],
+      "essential": true,
+      "memory": 128
+    },
+    
+    {
+      "name": "node-chrome",
+      "image": "selenium/node-chrome",
+      "environment": [
+        {
+          "name": "HUB_PORT_4444_TCP_ADDR",
+          "value": "seleniumhub"
+        },
+        {
+          "name": "HUB_PORT_4444_TCP_PORT",
+          "value": "4444"
+        }
+      ],
+      "links": [
+        "seleniumhub"
+      ],
+      "essential": false,
+      "memory": 128
+    },
+    
+    {
+      "name": "node-firefox",
+      "image": "selenium/node-firefox",
+      "environment": [
+        {
+          "name": "HUB_PORT_4444_TCP_ADDR",
+          "value": "seleniumhub"
+        },
+        {
+          "name": "HUB_PORT_4444_TCP_PORT",
+          "value": "4444"
+        }
+      ],
+      "links": [
+        "seleniumhub"
+      ],
+      "essential": false,
+      "memory": 128
+    }
+  ]
+}
