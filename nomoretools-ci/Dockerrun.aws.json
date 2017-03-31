@@ -5,7 +5,7 @@
   "containerDefinitions": [
     {
       "name": "proxy",
-      "image": "zsuffazs/nomoretools-ci-proxy",
+      "image": "zsuffazs/nomoretools-ci-proxy:dev",
       "essential": true,
       "memory": 128,
       "portMappings": [
@@ -66,7 +66,7 @@
 
     {
       "name": "jenkins",
-      "image": "nomoretools-ci-jenkins",
+      "image": "zsuffazs/nomoretools-ci-jenkins:dev",
       "essential": true,
       "memory": 256,
       "portMappings": [
@@ -113,7 +113,7 @@
     
     {
       "name": "nexus",
-      "image": "nomoretools-ci-nexus",
+      "image": "zsuffazs/nomoretools-ci-nexus:dev",
       "essential": true,
       "memory": 128,
       "portMappings": [
@@ -126,7 +126,7 @@
     
     {
       "name": "sonar",
-      "image": "nomoretools-ci-sonar",
+      "image": "zsuffazs/nomoretools-ci-sonar:dev",
       "essential": true,
       "memory": 128,
       "links": [
