@@ -74,7 +74,7 @@
             <version>1.5.0</version>
             <configuration>
               <applicationName>NoMoreTools-CI</applicationName>
-              <environmentRef>production</environmentRef>
+              <environmentRef>prod-env</environmentRef>
               <cnamePrefix>ci-prod</cnamePrefix>
               <s3Bucket>elasticbeanstalk-us-west-2-327021055680</s3Bucket>
               <solutionStack>64bit Amazon Linux 2016.09 v2.5.0 running Multi-container Docker 1.12.6 (Generic)</solutionStack>
@@ -88,7 +88,8 @@
                 <goals>
                   <goal>upload-source-bundle</goal>
                   <goal>create-application-version</goal>
-                  <!-- <goal>update-environment</goal> <goal>wait-for-environment</goal> -->
+                  <goal>update-environment</goal>
+                  <!--  <goal>wait-for-environment</goal> -->
                 </goals>
               </execution>
             </executions>
