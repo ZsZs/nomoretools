@@ -7,7 +7,7 @@ networks:
 services:
  proxy:
   build: ./proxy
-  image: zsuffazs/nomoretools-ci-proxy:dev
+  image: zsuffazs/nomoretools-ci-proxy:latest
   container_name: ci-proxy
   ports:
    - "80:80"
@@ -22,7 +22,7 @@ services:
 
  nexus:
   build: ./nexus
-  image: zsuffazs/nomoretools-ci-nexus:dev
+  image: zsuffazs/nomoretools-ci-nexus:latest
   container_name: ci-nexus
   ports:
     - "18081:8081"
@@ -31,7 +31,7 @@ services:
 
  jenkins:
   build: ./jenkins
-  image: zsuffazs/nomoretools-ci-jenkins:dev
+  image: zsuffazs/nomoretools-ci-jenkins:latest
   container_name: ci-jenkins
   ports:
     - "18080:8080"
@@ -53,7 +53,7 @@ services:
 
  sonar:
   build: ./sonar
-  image: zsuffazs/nomoretools-ci-sonar:dev
+  image: zsuffazs/nomoretools-ci-sonar:latest
   container_name: ci-sonar
   ports:
    - "19000:9000"
