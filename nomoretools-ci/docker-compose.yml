@@ -41,7 +41,7 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     - /usr/bin/docker:/usr/bin/docker
     - /opt/jenkins/:/var/lib/jenkins/
-    - ${CI_TOOLSET_DATA_HOME}/jenkins/:/usr/share/jenkins/
+    - ${CI_TOOLSET_DATA_HOME}/jenkins/:/var/jenkins_home
   depends_on:
     - nexus
     - gitlab
