@@ -41,7 +41,6 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     - /usr/bin/docker:/usr/bin/docker
     - /opt/jenkins/:/var/lib/jenkins/
-    - ${CI_TOOLSET_DATA_HOME}/jenkins/:/var/jenkins_home
   depends_on:
     - nexus
     - gitlab
@@ -77,7 +76,7 @@ services:
    - POSTGRES_USER=sonar
    - POSTGRES_PASSWORD=sonar
   volumes:
-    - ${CI_TOOLSET_DATA_HOME}/postgres/data:/var/lib/postgresql/data
+    - /opt/postgres/data:/var/lib/postgresql/data
 
  gitlab:
   image: gitlab/gitlab-ce:8.14.4-ce.0
@@ -94,9 +93,9 @@ services:
     - "443:443"
     - "2222:22"
   volumes:
-    - ${CI_TOOLSET_DATA_HOME}/gitlab/config:/etc/gitlab
-    - ${CI_TOOLSET_DATA_HOME}/gitlab/logs:/var/log/gitlab
-    - ${CI_TOOLSET_DATA_HOME}/gitlab/data:/var/opt/gitlab
+    - /opt/gitlab/config:/etc/gitlab
+    - /opt/gitlab/logs:/var/log/gitlab
+    - /opt/gitlab/data:/var/opt/gitlab
 
  seleniumhub:
   image: selenium/hub
